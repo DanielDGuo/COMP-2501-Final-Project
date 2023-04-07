@@ -14,7 +14,10 @@ namespace game {
 		void Update(double delta_time) override;
 
 		//Activates the ricochet for the given bullet
-		virtual void Ricochet(GameObject* obj);
+		void Ricochet(GameObject* obj);
+
+		//Activates the unique effect of the given bullet
+		virtual void Activate();
 
 		int getDamage() { return damage; }
 

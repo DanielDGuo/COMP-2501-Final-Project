@@ -33,11 +33,48 @@ namespace game {
 	void BulletGameObject::Ricochet(GameObject* obj)
 	{
 		ricocheted = true;
-		// Calculate which side of the wall the bullet is on
-		float normal = obj->getRotation() + 3.1415 / 2;
-		float angleDif = acos((cos(rotAngle) * cos(normal)) + (sin(rotAngle) * sin(normal)));
-		// Calculate which side of the normal the bullet is on
-		damage *= 2;
+		glm::vec3 objPos = obj->GetPosition();
+		float objAngle = obj->getRotation();
+		float normalAngle = objAngle + 3.1415/2;
+
+		// Set up vectors for the bullet, the object, and its normal
+		glm::vec3 bulletVector = position_ - objPos;
+		double length = sqrt(pow(bulletVector.x, 2) + pow(bulletVector.y, 2));
+		bulletVector /= length;
+
+		glm::vec3 objVector;
+		objVector.x = sin(objAngle) + objPos.x;
+		objVector.y = cos(objAngle) + objPos.y;
+		objVector.z = 0;
+
+		glm::vec3 normalVector;
+		normalVector.x = sin(normalAngle) + objPos.x;
+		normalVector.y = cos(normalAngle) + objPos.y;
+		normalVector.z = 0;
+
+
+		//Calculate the new angle for the bullet
+		float dot = glm::dot(bulletVector, normalVector);
+		float angleDif = acos(dot);
+
+		//Determine which side of the normal the bullet is on and update the bullet's angle accordingly
+		dot = glm::dot(bulletVector, objVector);
+		if (dot > 0)
+		{
+			rotAngle = normalAngle + angleDif;
+		}
+		else
+		{
+			rotAngle = normalAngle - angleDif;
+		}
+
+		//Activate the bullet's effect
+		Activate();
+	}
+
+	void BulletGameObject::Activate()
+	{
+
 	}
 
 } // namespace game

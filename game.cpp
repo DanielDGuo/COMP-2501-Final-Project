@@ -648,10 +648,13 @@ namespace game {
 					//Check the length of the wall
 					glm::vec3 wallVector = wallEndPos - wallStartPos;
 					double length = sqrt(pow(wallVector.x, 2) + pow(wallVector.y, 2));
+					std::cout << length << std::endl;
 					
 					if (length >= MIN_WALL_LENGTH && length <= MAX_WALL_LENGTH)
 					{
 						//Calculate the shape of the wall
+						length *= 0.5;
+						std::cout << length << std::endl;
 					}
 
 				}
