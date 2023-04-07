@@ -30,6 +30,7 @@ namespace game {
 		float spawnTime;
 		//determines if the bullet is in ricochet mode
 		bool ricocheted;
+		float timeSinceLastRicochet;
 
 	}; // class BulletGameObject
 

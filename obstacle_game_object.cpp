@@ -4,12 +4,14 @@
 
 namespace game {
 
-	ObstacleObject::ObstacleObject(const glm::vec3& position, Geometry* geom, Shader* shader, GLuint texture, float length, float rot)
+	ObstacleObject::ObstacleObject(const glm::vec3& position, Geometry* geom, Shader* shader, GLuint texture, const glm::vec3& start, const glm::vec3& end, float length, float rot)
 		: GameObject(position, geom, shader, texture, 3) 
 	{
 		scalex = length;
 		scaley = 0.1;
 		rotAngle = rot;
+		startPos = start;
+		endPos = end;
 	}
 
 	void ObstacleObject::Update(double delta_time) {

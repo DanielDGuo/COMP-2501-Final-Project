@@ -432,6 +432,22 @@ namespace game {
 			tmpObject->Render(view_matrix, current_time_);
 		}
 
+		for (int i = 0; i < obstacles_.size(); i++) {
+			//get the temporary obstacle object
+			ObstacleObject* obstacle = obstacles_[i];
+
+			//update the object
+			obstacle->Update(delta_time);
+
+			//deletes objects requesting deletion. skips collision detection
+			if (obstacle->getDelStatus()) {
+				obstacles_.erase(obstacles_.begin() + i);
+			}
+
+			//render the object
+			obstacle->Render(view_matrix, current_time_);
+		}
+
 		for (int i = 0; i < ally_bullets_.size(); i++) {
 			//get the temporary effect
 			BulletGameObject* bullet = ally_bullets_[i];
@@ -439,6 +455,53 @@ namespace game {
 			//update the object
 			bullet->Update(delta_time);
 
+			//Handle collision with obstacles
+			for (int j = 0; j < obstacles_.size(); j++)
+			{
+				ObstacleObject* obstacle = obstacles_[j];
+
+				glm::vec3 curpos = bullet->GetPosition();
+				glm::vec3 nextpos = bullet->GetVelocity();
+				nextpos *= delta_time;
+				nextpos += curpos;
+
+				//Get the obstacle position, length, and rotation angle
+				glm::vec3 obspos = obstacle->GetPosition();
+				float obslength = obstacle->GetScalex();
+				float obsangle = obstacle->getRotation();
+
+				//vector from bullet to next position
+				glm::vec3 ray = nextpos - curpos;
+				
+				//Create a vector for the obstacle
+				glm::vec3 obsVector = obstacle->getEndPos() - obstacle->getStartPos();
+
+				//asx = curpos.x,	asy = curpos.y,		Adx = ray.x,			Ady = ray.y
+				//bsx = obspos.x,	bsy = obspos.y,		Bdx = obsVector.x,		Bdy = obsVector.y
+
+				//Calculate the lengths of each vector needed for the rays to intersect
+				float u = (curpos.x * obsVector.x + obsVector.y * obspos.x - obspos.y * obsVector.x - obsVector.y * curpos.x)
+					/ (curpos.x * obsVector.y - ray.y * obsVector.x);
+				float v = (curpos.x - obspos.x + (ray.x * u)) / obsVector.x;
+
+				std::cout << "(u: " << u << ", v: " << v << ")" << std::endl;
+
+				//Check if both lengths are less than 1 and greater than 0
+				if (u <= 1 && u > 0 && v <= 1 && v > 0)
+				{					
+					//Set the bullet's position to be against the wall
+					glm::vec3 intersect;
+					intersect.x = curpos.x + (ray.x * u);
+					intersect.y = curpos.y + (ray.y * u);
+					intersect.z = 0.0f;
+					bullet->SetPosition(intersect);
+
+					//Ricochet the bullet
+					bullet->Ricochet(obstacle);
+				}
+			}
+
+			//Handle collision with enemies
 			for (int j = 0; j < enemy_game_objects_.size(); j++) {
 				EnemyGameObject* enemyObject = enemy_game_objects_[j];
 
@@ -509,22 +572,6 @@ namespace game {
 
 			//render the object
 			bullet->Render(view_matrix, current_time_);
-		}
-
-		for (int i = 0; i < obstacles_.size(); i++) {
-			//get the temporary effect
-			ObstacleObject* obstacle = obstacles_[i];
-
-			//update the object
-			obstacle->Update(delta_time);
-
-			//deletes objects requesting deletion. skips collision detection
-			if (obstacle->getDelStatus()) {
-				enemy_bullets_.erase(enemy_bullets_.begin() + i);
-			}
-
-			//render the object
-			obstacle->Render(view_matrix, current_time_);
 		}
 
 		//update the blade
@@ -641,8 +688,6 @@ namespace game {
 					wallStartPos.x = *x;
 					wallStartPos.y = *y;
 					wallStartPos.z = 0;
-
-					std::cout << "(Cursor Pos: " << *x << ", " << *y << ")" << std::endl;
 					ConvertToWorldCoords(wallStartPos);
 				}
 			}
@@ -676,25 +721,19 @@ namespace game {
 						//Calculate the angle of the wall
 						float wallAngle = 0;
 						
-						if (wallPos.x != 0)
+						if (wallVector.x != 0)
 						{
-							wallAngle = atan(wallPos.y/wallPos.x);
-							std::cout << wallAngle << std::endl;
-							
+							wallAngle = atan(wallVector.y/wallVector.x);
 						}
 						else
 						{
 							
 						}
-						
 
 						//Create the wall
-						obstacles_.push_back(new ObstacleObject(wallPos, sprite_, &sprite_shader_, tex_[12], length, wallAngle));
+						obstacles_.push_back(new ObstacleObject(wallPos, sprite_, &sprite_shader_, tex_[12], wallStartPos, wallEndPos, length, wallAngle));
 						++numWalls;
-						std::cout << "Success (Wall Pos: " << wallPos.x << ", " << wallPos.y << ")" << std::endl;
 					}
-					
-					std::cout << "(Cur Pos : " << curpos.x << ", " << curpos.y << ")" << std::endl;
 				}
 			}
 			if (glfwGetKey(window_, GLFW_KEY_Q) == GLFW_PRESS) {

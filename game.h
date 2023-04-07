@@ -22,7 +22,7 @@
 
 #define MAX_WALLS 2
 #define MIN_WALL_LENGTH 0.1
-#define MAX_WALL_LENGTH 100
+#define MAX_WALL_LENGTH 2
 
 namespace game {
 
