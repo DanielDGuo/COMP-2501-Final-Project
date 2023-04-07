@@ -9,7 +9,7 @@ namespace game {
     class ObstacleObject : public GameObject {
 
     public:
-        ObstacleObject(const glm::vec3& position, Geometry* geom, Shader* shader, GLuint texture);
+        ObstacleObject(const glm::vec3& position, Geometry* geom, Shader* shader, GLuint texture, float length, float rot);
 
         // Update function
         void Update(double delta_time) override;

@@ -243,6 +243,7 @@ namespace game {
 		SetTexture(tex_[9], (resources_directory_g + std::string("/textures/PlayerInvincible.png")).c_str());
 		SetTexture(tex_[10], (resources_directory_g + std::string("/textures/bullet.png")).c_str());
 		SetTexture(tex_[11], (resources_directory_g + std::string("/textures/blade.png")).c_str());
+		SetTexture(tex_[12], (resources_directory_g + std::string("/textures/wall.png")).c_str());
 		glBindTexture(GL_TEXTURE_2D, tex_[0]);
 	}
 
@@ -513,6 +514,22 @@ namespace game {
 			bullet->Render(view_matrix, current_time_);
 		}
 
+		for (int i = 0; i < obstacles_.size(); i++) {
+			//get the temporary effect
+			ObstacleObject* obstacle = obstacles_[i];
+
+			//update the object
+			obstacle->Update(delta_time);
+
+			//deletes objects requesting deletion. skips collision detection
+			if (obstacle->getDelStatus()) {
+				enemy_bullets_.erase(enemy_bullets_.begin() + i);
+			}
+
+			//render the object
+			obstacle->Render(view_matrix, current_time_);
+		}
+
 		//update the blade
 		blade->Update(delta_time);
 
@@ -627,6 +644,9 @@ namespace game {
 					wallStartPos.x = *x;
 					wallStartPos.y = *y;
 					wallStartPos.z = 0;
+
+					std::cout << "(Cursor Pos: " << *x << ", " << *y << ")" << std::endl;
+					ConvertToWorldCoords(wallStartPos);
 				}
 			}
 			if (glfwGetMouseButton(window_, GLFW_MOUSE_BUTTON_1) == GLFW_RELEASE)
@@ -644,25 +664,45 @@ namespace game {
 					wallEndPos.x = *x;
 					wallEndPos.y = *y;
 					wallEndPos.z = 0;
+					ConvertToWorldCoords(wallEndPos);
 
 					//Check the length of the wall
 					glm::vec3 wallVector = wallEndPos - wallStartPos;
 					double length = sqrt(pow(wallVector.x, 2) + pow(wallVector.y, 2));
-					std::cout << length << std::endl;
 					
 					if (length >= MIN_WALL_LENGTH && length <= MAX_WALL_LENGTH)
-					{
-						//Calculate the shape of the wall
-						length *= 0.5;
-						std::cout << length << std::endl;
-					}
+					{						
+						//Calculate the position of the wall
+						wallVector *= 0.5;
+						glm::vec3 wallPos = wallStartPos + wallVector;
 
+						//Calculate the angle of the wall
+						float wallAngle = asin((wallVector.x - wallPos.x) / (length * 0.5));
+
+						//Create the wall
+						obstacles_.push_back(new ObstacleObject(wallPos, sprite_, &sprite_shader_, tex_[12], length, wallAngle));
+						++numWalls;
+						std::cout << "Success (Wall Pos: " << wallPos.x << ", " << wallPos.y << ")" << std::endl;
+					}
+					
+					std::cout << "(Cur Pos : " << curpos.x << ", " << curpos.y << ")" << std::endl;
 				}
 			}
 			if (glfwGetKey(window_, GLFW_KEY_Q) == GLFW_PRESS) {
 				glfwSetWindowShouldClose(window_, true);
 			}
 		}
+	}
+
+	void Game::ConvertToWorldCoords(glm::vec3& screenPos)
+	{
+		screenPos.x -= window_width_g / 2;
+		screenPos.x /= window_width_g / 2;
+		screenPos.y -= window_height_g;
+		screenPos.y -= window_height_g / 2;
+		screenPos.y /= window_height_g / 2;
+
+
 	}
 
 } // namespace game

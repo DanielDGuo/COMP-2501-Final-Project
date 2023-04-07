@@ -2,7 +2,7 @@
 #define GAME_H_
 
 #define GLEW_STATIC
-#define NUM_TEXTURES 12
+#define NUM_TEXTURES 13
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <vector>
@@ -14,12 +14,13 @@
 #include "player_game_object.h"
 #include "temp_game_object.h"
 #include "bullet_game_object.h"
+#include "obstacle_game_object.h"
 #include "flavour_game_object.h"
 #include "cone_particle_system.h"
 
 #define MAX_WALLS 2
-#define MIN_WALL_LENGTH 50
-#define MAX_WALL_LENGTH 300
+#define MIN_WALL_LENGTH 0.1
+#define MAX_WALL_LENGTH 100
 
 namespace game {
 
@@ -81,16 +82,19 @@ namespace game {
 		// List of temporary game objects
 		std::vector<TempGameObject*> temp_game_objects_;
 
-		// List of temporary game objects
+		// List of ally bullet game objects
 		std::vector<BulletGameObject*> ally_bullets_;
 
-		// List of temporary game objects
+		// List of enemy bullet game objects
 		std::vector<BulletGameObject*> enemy_bullets_;
 
-		// List of temporary game objects
+		// List of obstacle game objects
+		std::vector<ObstacleObject*> obstacles_;
+
+		// List of player effects
 		std::vector<GameObject*> player_effects;
 
-		// List of temporary game objects
+		// List of bullet effects
 		std::vector<ConeParticleSystem*> bullet_effects_;
 
 		FlavourGameObject* blade;
@@ -115,6 +119,9 @@ namespace game {
 
 		// Update the game based on user input and simulation
 		void Update(glm::mat4 view_matrix, double delta_time);
+
+		//Helper function to convert from screen coordinates to world coordinates
+		void ConvertToWorldCoords(glm::vec3& screenPos);
 
 		// Time variables
 		float lastFireTime;

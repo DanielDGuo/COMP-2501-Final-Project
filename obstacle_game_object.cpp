@@ -4,13 +4,12 @@
 
 namespace game {
 
-	/*
-		TempameObject inherits from GameObject
-		It overrides GameObject's update method, so that you can check for input to change the velocity of the player
-	*/
-
-	ObstacleObject::ObstacleObject(const glm::vec3& position, Geometry* geom, Shader* shader, GLuint texture)
-		: GameObject(position, geom, shader, texture, 1) {
+	ObstacleObject::ObstacleObject(const glm::vec3& position, Geometry* geom, Shader* shader, GLuint texture, float length, float rot)
+		: GameObject(position, geom, shader, texture, 3) 
+	{
+		scalex = length;
+		scaley = 0.1;
+		rotAngle = rot;
 	}
 
 	void ObstacleObject::Update(double delta_time) {
