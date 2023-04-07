@@ -9,15 +9,25 @@ namespace game {
 	class BulletGameObject : public GameObject {
 
 	public:
-		BulletGameObject(const glm::vec3& position, Geometry* geom, Shader* shader, GLuint texture, float direction, bool enemy);
+		BulletGameObject(const glm::vec3& position, Geometry* geom, Shader* shader, GLuint texture, float direction, int dam, bool enemy);
 
 		void Update(double delta_time) override;
 
+		//Activates the ricochet for the given bullet
+		virtual void Ricochet(GameObject* obj);
+
+		int getDamage() { return damage; }
+
 	private:
+		//Bullet damage
+		int damage;
 		//determines if it's an ally bullet
 		bool enemyBullet;
 		//timestamp of creation
 		float spawnTime;
+		//determines if the bullet is in ricochet mode
+		bool ricocheted;
+
 	}; // class BulletGameObject
 
 } // namespace game

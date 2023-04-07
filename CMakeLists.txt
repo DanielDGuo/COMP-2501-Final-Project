@@ -16,6 +16,7 @@ set(HDRS
 	background_game_object.h
 	bullet_game_object.h
 	flavour_game_object.h
+	obstacle_game_object.h
     shader.h
     geometry.h
     sprite.h
@@ -37,6 +38,7 @@ set(SRCS
 	background_game_object.cpp
 	bullet_game_object.cpp
 	flavour_game_object.cpp
+	obstacle_game_object.cpp
     shader.cpp
     sprite.cpp
     sprite_vertex_shader.glsl

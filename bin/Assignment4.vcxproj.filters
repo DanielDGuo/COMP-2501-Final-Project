@@ -34,6 +34,9 @@
     <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\flavour_game_object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\obstacle_game_object.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -79,6 +82,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\flavour_game_object.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\obstacle_game_object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\shader.h">

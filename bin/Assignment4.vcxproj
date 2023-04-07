@@ -262,6 +262,7 @@
     <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\background_game_object.h" />
     <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\bullet_game_object.h" />
     <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\flavour_game_object.h" />
+    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\obstacle_game_object.h" />
     <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\shader.h" />
     <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\geometry.h" />
     <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\sprite.h" />
@@ -279,6 +280,7 @@
     <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\background_game_object.cpp" />
     <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\bullet_game_object.cpp" />
     <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\flavour_game_object.cpp" />
+    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\obstacle_game_object.cpp" />
     <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\shader.cpp" />
     <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\sprite.cpp" />
     <None Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\sprite_vertex_shader.glsl">

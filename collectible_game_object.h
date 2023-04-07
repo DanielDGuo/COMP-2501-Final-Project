@@ -11,7 +11,7 @@ namespace game {
         public:
             CollectibleObject(const glm::vec3 &position, Geometry *geom, Shader *shader, GLuint texture);
 
-            // Update function for moving the player object around
+            // Update function
             void Update(double delta_time) override;
     }; // class TempGameObject
 

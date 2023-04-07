@@ -97,7 +97,12 @@ namespace game {
 		// Initialize time
 		current_time_ = 0.0;
 
+		//Initialize time variables
 		lastFireTime = 0;
+		
+		//Initialize wall variables
+		drawingWall = false;
+		numWalls = 0;
 	}
 
 
@@ -464,7 +469,7 @@ namespace game {
 
 					//if the hitbox intersects the bullet, register a hit
 					if (((u1 >= 0 && u1 <= 1) || (u2 >= 0 && u2 <= 1)) && enemyObject->getTimeOfDeath() == NULL) {
-						enemyObject->setHealth(enemyObject->getHealth() - 1);
+						enemyObject->setHealth(enemyObject->getHealth() - bullet->getDamage());
 						bullet->setDelStatus(true);
 					}
 				}
@@ -597,15 +602,58 @@ namespace game {
 				player->setRotation(currot + rotation_increment);
 			}
 			if (glfwGetKey(window_, GLFW_KEY_SPACE) == GLFW_PRESS) {
-				//fire ally bullet every 0.1 seconds
-				if (glfwGetTime() > lastFireTime + 0.1) {
+				//fire ally bullet every 1 seconds
+				if (glfwGetTime() > lastFireTime + 1) {
 					lastFireTime = glfwGetTime();
-					ally_bullets_.push_back(new BulletGameObject(curpos, sprite_, &sprite_shader_, tex_[10], currot + 3.1415 / 2, false));
+					ally_bullets_.push_back(new BulletGameObject(curpos, sprite_, &sprite_shader_, tex_[10], currot + 3.1415 / 2, 1, false));
 
 					// Setup particle system
 					ConeParticleSystem* bulletParticles = new ConeParticleSystem(glm::vec3(0.0f, -0.5f, 0.0f), bullet_particles_, &bullet_particle_shader_, tex_[4], ally_bullets_[ally_bullets_.size() - 1]);
 					bulletParticles->SetScale(0.1);
 					bullet_effects_.push_back(bulletParticles);
+				}
+			}
+			if (glfwGetMouseButton(window_, GLFW_MOUSE_BUTTON_1) == GLFW_PRESS)
+			{
+				//Begin drawing a wall if there are currently less than the maximum number of walls and another wall is not currently being drawn
+				if (numWalls < MAX_WALLS && !drawingWall)
+				{
+					drawingWall = true;
+					
+					//Record the position of the mouse at the beginning of the drawing
+					double* x = new double();
+					double* y = new double();
+					glfwGetCursorPos(window_, x, y);
+					wallStartPos.x = *x;
+					wallStartPos.y = *y;
+					wallStartPos.z = 0;
+				}
+			}
+			if (glfwGetMouseButton(window_, GLFW_MOUSE_BUTTON_1) == GLFW_RELEASE)
+			{
+				//Finish drawing a wall if a wall is currently being drawn
+				if (drawingWall)
+				{
+					drawingWall = false;
+
+					//Record the position of the mouse at the end of the drawing
+					double* x = new double();
+					double* y = new double();
+					glfwGetCursorPos(window_, x, y);
+					glm::vec3 wallEndPos;
+					wallEndPos.x = *x;
+					wallEndPos.y = *y;
+					wallEndPos.z = 0;
+
+					//Check the length of the wall
+					glm::vec3 wallVector = wallEndPos - wallStartPos;
+					double length = sqrt(pow(wallVector.x, 2) + pow(wallVector.y, 2));
+					
+					if (length >= MIN_WALL_LENGTH && length <= MAX_WALL_LENGTH)
+					{
+						//Calculate the shape of the wall
+					}
+
 				}
 			}
 			if (glfwGetKey(window_, GLFW_KEY_Q) == GLFW_PRESS) {

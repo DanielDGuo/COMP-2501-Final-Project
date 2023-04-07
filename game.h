@@ -17,6 +17,10 @@
 #include "flavour_game_object.h"
 #include "cone_particle_system.h"
 
+#define MAX_WALLS 2
+#define MIN_WALL_LENGTH 50
+#define MAX_WALL_LENGTH 300
+
 namespace game {
 
 	// A class for holding the main game objects
@@ -112,7 +116,14 @@ namespace game {
 		// Update the game based on user input and simulation
 		void Update(glm::mat4 view_matrix, double delta_time);
 
+		// Time variables
 		float lastFireTime;
+		
+		// Wall variables
+		int numWalls;
+		bool drawingWall;
+		glm::vec3 wallStartPos;
+
 	}; // class Game
 
 } // namespace game
