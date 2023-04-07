@@ -262,11 +262,8 @@ namespace game {
 				viewport_background_color_g.b, 0.0);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-			// Set view to zoom out, centered by default at 0,0
-			float camera_zoom = 0.25f;
-
 			glm::mat4 view_matrix = glm::mat4(1.0f);
-			view_matrix = glm::scale(view_matrix, glm::vec3(camera_zoom, camera_zoom, camera_zoom));
+			view_matrix = glm::scale(view_matrix, glm::vec3(CAMERA_ZOOM, CAMERA_ZOOM, CAMERA_ZOOM));
 
 			if (!gameOver) {//while not gameOver, access the player position
 				playerPos = -player_game_objects_[0]->GetPosition();
@@ -677,7 +674,19 @@ namespace game {
 						glm::vec3 wallPos = wallStartPos + wallVector;
 
 						//Calculate the angle of the wall
-						float wallAngle = asin((wallVector.x - wallPos.x) / (length * 0.5));
+						float wallAngle = 0;
+						
+						if (wallPos.x != 0)
+						{
+							wallAngle = atan(wallPos.y/wallPos.x);
+							std::cout << wallAngle << std::endl;
+							
+						}
+						else
+						{
+							
+						}
+						
 
 						//Create the wall
 						obstacles_.push_back(new ObstacleObject(wallPos, sprite_, &sprite_shader_, tex_[12], length, wallAngle));
@@ -694,15 +703,25 @@ namespace game {
 		}
 	}
 
-	void Game::ConvertToWorldCoords(glm::vec3& screenPos)
+	void Game::ConvertToWorldCoords(glm::vec3& pos)
 	{
-		screenPos.x -= window_width_g / 2;
-		screenPos.x /= window_width_g / 2;
-		screenPos.y -= window_height_g;
-		screenPos.y -= window_height_g / 2;
-		screenPos.y /= window_height_g / 2;
+		//Create a 4x4 matrix to represent the position on the screen, reducing the coordinates to a range of -1 to 1
+		pos.x -= window_width_g / 2;
+		pos.x /= window_width_g / 2;
+		pos.y -= window_width_g;
+		pos.y *= -1;
+		pos.y -= window_height_g / 2;
+		pos.y /= window_height_g / 2;
 
+		//Divide by the camera zoom
+		pos /= CAMERA_ZOOM;
 
+		//Get the player's position
+		glm::vec3 playerPos = -player_game_objects_[0]->GetPosition();
+
+		//Translate by the player's position
+		pos += playerPos;
+		
 	}
 
 } // namespace game

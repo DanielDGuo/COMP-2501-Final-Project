@@ -18,6 +18,8 @@
 #include "flavour_game_object.h"
 #include "cone_particle_system.h"
 
+#define CAMERA_ZOOM 0.25
+
 #define MAX_WALLS 2
 #define MIN_WALL_LENGTH 0.1
 #define MAX_WALL_LENGTH 100
@@ -121,7 +123,7 @@ namespace game {
 		void Update(glm::mat4 view_matrix, double delta_time);
 
 		//Helper function to convert from screen coordinates to world coordinates
-		void ConvertToWorldCoords(glm::vec3& screenPos);
+		void ConvertToWorldCoords(glm::vec3& pos);
 
 		// Time variables
 		float lastFireTime;
