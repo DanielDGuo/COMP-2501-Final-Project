@@ -193,7 +193,9 @@ namespace game {
 
 		// Setup background
 		Background* background = new Background(glm::vec3(0.0f, 0.0f, 0.0f), sprite_, &sprite_shader_, tex_[3]);
-		background->SetScale(10.0);
+		background->SetScale(100.0);
+		background->SetTileNum(10);
+		
 		background_game_objects_.push_back(background);
 
 		// Setup particle system
@@ -272,16 +274,15 @@ namespace game {
 				viewport_background_color_g.b, 0.0);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-			glm::mat4 view_matrix = glm::mat4(1.0f);
-			view_matrix = glm::scale(view_matrix, glm::vec3(CAMERA_ZOOM, CAMERA_ZOOM, CAMERA_ZOOM));
-
 			if (!gameOver) {//while not gameOver, access the player position
 				playerPos = -player_game_objects_[0]->GetPosition();
 			}
 
-
 			//translate the view matrix by the player position, or the last player position it saw
-			view_matrix = glm::translate(view_matrix, playerPos);
+
+			glm::mat4 view_matrix = glm::scale(glm::mat4(1.0f), glm::vec3(CAMERA_ZOOM, CAMERA_ZOOM, CAMERA_ZOOM)) * glm::translate(glm::mat4(1.0f), playerPos);
+
+
 
 			// Calculate delta time
 			double current_time = glfwGetTime();

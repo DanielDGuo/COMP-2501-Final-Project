@@ -74,6 +74,9 @@ namespace game {
 		// Set up the view matrix
 		shader_->SetUniformMat4("view_matrix", view_matrix);
 
+		//send tilenum to shader
+		shader_->SetUniform1i("TileNum", TileNum);
+
 		// Setup the scaling matrix for the shader
 		glm::mat4 scaling_matrix = glm::scale(glm::mat4(1.0f), glm::vec3(scalex, scaley, 1.0));
 

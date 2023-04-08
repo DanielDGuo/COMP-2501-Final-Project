@@ -8,11 +8,12 @@ in vec2 uv_interp;
 // Texture sampler
 uniform sampler2D onetex;
 uniform int deceased;
+uniform int TileNum;
 
 void main()
 {
     // Sample texture
-    vec4 color = texture2D(onetex, uv_interp);
+    vec4 color = texture2D(onetex, uv_interp * TileNum);
 
     // Assign color to fragment
 
@@ -23,6 +24,7 @@ void main()
     }else{
         gl_FragColor = vec4(color.r, color.g, color.b, color.a);
     }
+
 
     // Check for transparency
     if(color.a < 1.0)

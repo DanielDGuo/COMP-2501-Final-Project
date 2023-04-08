@@ -39,6 +39,7 @@ namespace game {
             inline float getRotation() { return rotAngle; };
             inline float getTimeOfDeath() { return timeOfDeath; };
             float getLife() { return lifespan; }
+            int getTileNum() { return TileNum; }
 
             // Setters
             inline void SetPosition(const glm::vec3& position) { position_ = position; }
@@ -51,6 +52,7 @@ namespace game {
             inline void setRotation(float r) { rotAngle = r; };
             inline void setDelStatus(bool d) { delObj = d; };
             void setLife(float l) { lifespan = l; }
+            void SetTileNum(int n) { TileNum = n; }
 
         protected:
             // Object's Transform Variables
@@ -63,6 +65,7 @@ namespace game {
             bool delObj;
             //keeps track of object health
             int health;
+            int TileNum = 1;
 
             float timeOfDeath;
 
