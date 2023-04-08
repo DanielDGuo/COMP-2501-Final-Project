@@ -1,2 +1,2 @@
-C:/Users/Scott Main/Documents/GitHub/COMP-2501-Final-Project/bin/CMakeFiles/FinalProj.dir
-C:/Users/Scott Main/Documents/GitHub/COMP-2501-Final-Project/bin/CMakeFiles/ALL_BUILD.dir
+C:/Users/jmcal/OneDrive/Documents/GitHub/COMP-2501-Final-Project/bin/CMakeFiles/FinalProj.dir
+C:/Users/jmcal/OneDrive/Documents/GitHub/COMP-2501-Final-Project/bin/CMakeFiles/ALL_BUILD.dir

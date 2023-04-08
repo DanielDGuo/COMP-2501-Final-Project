@@ -22,7 +22,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{5001F611-C608-3F38-82B4-A529B565CBD7}</ProjectGuid>
+    <ProjectGuid>{62AB36DC-D2CF-3CD3-BD9D-F24628C16EA3}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0.22000.0</WindowsTargetPlatformVersion>
     <Platform>x64</Platform>
@@ -59,25 +59,25 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\bin\Debug\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\bin\Debug\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">FinalProj.dir\Debug\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">FinalProj_d</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\bin\Release\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\bin\Release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">FinalProj.dir\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">FinalProj</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\bin\MinSizeRel\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\bin\MinSizeRel\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">FinalProj.dir\MinSizeRel\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">FinalProj</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\bin\RelWithDebInfo\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\bin\RelWithDebInfo\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">FinalProj.dir\RelWithDebInfo\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">FinalProj</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
@@ -86,7 +86,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\bin;C:\Users\Scott Main\Documents\2501\Libraries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\bin;C:\Users\jmcal\OneDrive\Desktop\Uni\COMP 2501\Libraries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -102,10 +102,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\bin;C:\Users\Scott Main\Documents\2501\Libraries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\bin;C:\Users\jmcal\OneDrive\Desktop\Uni\COMP 2501\Libraries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\bin;C:\Users\Scott Main\Documents\2501\Libraries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\bin;C:\Users\jmcal\OneDrive\Desktop\Uni\COMP 2501\Libraries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -113,13 +113,13 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>opengl32.lib;C:\Users\Scott Main\Documents\2501\Libraries\lib\glew32s.lib;C:\Users\Scott Main\Documents\2501\Libraries\lib\glfw3.lib;C:\Users\Scott Main\Documents\2501\Libraries\lib\SOIL.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;C:\Users\jmcal\OneDrive\Desktop\Uni\COMP 2501\Libraries\lib\glew32s.lib;C:\Users\jmcal\OneDrive\Desktop\Uni\COMP 2501\Libraries\lib\glfw3.lib;C:\Users\jmcal\OneDrive\Desktop\Uni\COMP 2501\Libraries\lib\SOIL.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/Users/Scott Main/Documents/GitHub/COMP-2501-Final-Project/bin/Debug/FinalProj_d.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/Users/Scott Main/Documents/GitHub/COMP-2501-Final-Project/bin/Debug/FinalProj_d.pdb</ProgramDataBaseFile>
+      <ImportLibrary>C:/Users/jmcal/OneDrive/Documents/GitHub/COMP-2501-Final-Project/bin/Debug/FinalProj_d.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/jmcal/OneDrive/Documents/GitHub/COMP-2501-Final-Project/bin/Debug/FinalProj_d.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
@@ -128,7 +128,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\bin;C:\Users\Scott Main\Documents\2501\Libraries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\bin;C:\Users\jmcal\OneDrive\Desktop\Uni\COMP 2501\Libraries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
@@ -144,10 +144,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\bin;C:\Users\Scott Main\Documents\2501\Libraries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\bin;C:\Users\jmcal\OneDrive\Desktop\Uni\COMP 2501\Libraries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\bin;C:\Users\Scott Main\Documents\2501\Libraries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\bin;C:\Users\jmcal\OneDrive\Desktop\Uni\COMP 2501\Libraries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -155,13 +155,13 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>opengl32.lib;C:\Users\Scott Main\Documents\2501\Libraries\lib\glew32s.lib;C:\Users\Scott Main\Documents\2501\Libraries\lib\glfw3.lib;C:\Users\Scott Main\Documents\2501\Libraries\lib\SOIL.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;C:\Users\jmcal\OneDrive\Desktop\Uni\COMP 2501\Libraries\lib\glew32s.lib;C:\Users\jmcal\OneDrive\Desktop\Uni\COMP 2501\Libraries\lib\glfw3.lib;C:\Users\jmcal\OneDrive\Desktop\Uni\COMP 2501\Libraries\lib\SOIL.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/Users/Scott Main/Documents/GitHub/COMP-2501-Final-Project/bin/Release/FinalProj.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/Users/Scott Main/Documents/GitHub/COMP-2501-Final-Project/bin/Release/FinalProj.pdb</ProgramDataBaseFile>
+      <ImportLibrary>C:/Users/jmcal/OneDrive/Documents/GitHub/COMP-2501-Final-Project/bin/Release/FinalProj.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/jmcal/OneDrive/Documents/GitHub/COMP-2501-Final-Project/bin/Release/FinalProj.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
@@ -170,7 +170,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\bin;C:\Users\Scott Main\Documents\2501\Libraries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\bin;C:\Users\jmcal\OneDrive\Desktop\Uni\COMP 2501\Libraries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
@@ -186,10 +186,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\bin;C:\Users\Scott Main\Documents\2501\Libraries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\bin;C:\Users\jmcal\OneDrive\Desktop\Uni\COMP 2501\Libraries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\bin;C:\Users\Scott Main\Documents\2501\Libraries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\bin;C:\Users\jmcal\OneDrive\Desktop\Uni\COMP 2501\Libraries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -197,13 +197,13 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>opengl32.lib;C:\Users\Scott Main\Documents\2501\Libraries\lib\glew32s.lib;C:\Users\Scott Main\Documents\2501\Libraries\lib\glfw3.lib;C:\Users\Scott Main\Documents\2501\Libraries\lib\SOIL.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;C:\Users\jmcal\OneDrive\Desktop\Uni\COMP 2501\Libraries\lib\glew32s.lib;C:\Users\jmcal\OneDrive\Desktop\Uni\COMP 2501\Libraries\lib\glfw3.lib;C:\Users\jmcal\OneDrive\Desktop\Uni\COMP 2501\Libraries\lib\SOIL.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/Users/Scott Main/Documents/GitHub/COMP-2501-Final-Project/bin/MinSizeRel/FinalProj.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/Users/Scott Main/Documents/GitHub/COMP-2501-Final-Project/bin/MinSizeRel/FinalProj.pdb</ProgramDataBaseFile>
+      <ImportLibrary>C:/Users/jmcal/OneDrive/Documents/GitHub/COMP-2501-Final-Project/bin/MinSizeRel/FinalProj.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/jmcal/OneDrive/Documents/GitHub/COMP-2501-Final-Project/bin/MinSizeRel/FinalProj.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
@@ -212,7 +212,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\bin;C:\Users\Scott Main\Documents\2501\Libraries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\bin;C:\Users\jmcal\OneDrive\Desktop\Uni\COMP 2501\Libraries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -227,10 +227,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\bin;C:\Users\Scott Main\Documents\2501\Libraries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\bin;C:\Users\jmcal\OneDrive\Desktop\Uni\COMP 2501\Libraries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\bin;C:\Users\Scott Main\Documents\2501\Libraries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\bin;C:\Users\jmcal\OneDrive\Desktop\Uni\COMP 2501\Libraries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -238,13 +238,13 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>opengl32.lib;C:\Users\Scott Main\Documents\2501\Libraries\lib\glew32s.lib;C:\Users\Scott Main\Documents\2501\Libraries\lib\glfw3.lib;C:\Users\Scott Main\Documents\2501\Libraries\lib\SOIL.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;C:\Users\jmcal\OneDrive\Desktop\Uni\COMP 2501\Libraries\lib\glew32s.lib;C:\Users\jmcal\OneDrive\Desktop\Uni\COMP 2501\Libraries\lib\glfw3.lib;C:\Users\jmcal\OneDrive\Desktop\Uni\COMP 2501\Libraries\lib\SOIL.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/Users/Scott Main/Documents/GitHub/COMP-2501-Final-Project/bin/RelWithDebInfo/FinalProj.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/Users/Scott Main/Documents/GitHub/COMP-2501-Final-Project/bin/RelWithDebInfo/FinalProj.pdb</ProgramDataBaseFile>
+      <ImportLibrary>C:/Users/jmcal/OneDrive/Documents/GitHub/COMP-2501-Final-Project/bin/RelWithDebInfo/FinalProj.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/jmcal/OneDrive/Documents/GitHub/COMP-2501-Final-Project/bin/RelWithDebInfo/FinalProj.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
@@ -252,57 +252,57 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\file_utils.h" />
-    <ClInclude Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\game.h" />
-    <ClInclude Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\game_object.h" />
-    <ClInclude Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\player_game_object.h" />
-    <ClInclude Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\enemy_game_object.h" />
-    <ClInclude Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\temp_game_object.h" />
-    <ClInclude Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\collectible_game_object.h" />
-    <ClInclude Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\background_game_object.h" />
-    <ClInclude Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\bullet_game_object.h" />
-    <ClInclude Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\flavour_game_object.h" />
-    <ClInclude Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\obstacle_game_object.h" />
-    <ClInclude Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\shader.h" />
-    <ClInclude Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\geometry.h" />
-    <ClInclude Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\sprite.h" />
-    <ClInclude Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\particles.h" />
-    <ClInclude Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\particle_system.h" />
-    <ClInclude Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\player_particles.h" />
-    <ClInclude Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\bullet_particles.h" />
-    <ClInclude Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\cone_particle_system.h" />
-    <ClCompile Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\file_utils.cpp" />
-    <ClCompile Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\game.cpp" />
-    <ClCompile Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\game_object.cpp" />
-    <ClCompile Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\main.cpp" />
-    <ClCompile Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\player_game_object.cpp" />
-    <ClCompile Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\enemy_game_object.cpp" />
-    <ClCompile Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\temp_game_object.cpp" />
-    <ClCompile Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\collectible_game_object.cpp" />
-    <ClCompile Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\background_game_object.cpp" />
-    <ClCompile Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\bullet_game_object.cpp" />
-    <ClCompile Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\flavour_game_object.cpp" />
-    <ClCompile Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\obstacle_game_object.cpp" />
-    <ClCompile Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\shader.cpp" />
-    <ClCompile Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\sprite.cpp" />
-    <None Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\sprite_vertex_shader.glsl">
+    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\file_utils.h" />
+    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\game.h" />
+    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\game_object.h" />
+    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\player_game_object.h" />
+    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\enemy_game_object.h" />
+    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\temp_game_object.h" />
+    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\collectible_game_object.h" />
+    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\background_game_object.h" />
+    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\bullet_game_object.h" />
+    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\flavour_game_object.h" />
+    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\obstacle_game_object.h" />
+    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\shader.h" />
+    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\geometry.h" />
+    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\sprite.h" />
+    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\particles.h" />
+    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\particle_system.h" />
+    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\player_particles.h" />
+    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\bullet_particles.h" />
+    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\cone_particle_system.h" />
+    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\file_utils.cpp" />
+    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\game.cpp" />
+    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\game_object.cpp" />
+    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\main.cpp" />
+    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\player_game_object.cpp" />
+    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\enemy_game_object.cpp" />
+    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\temp_game_object.cpp" />
+    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\collectible_game_object.cpp" />
+    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\background_game_object.cpp" />
+    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\bullet_game_object.cpp" />
+    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\flavour_game_object.cpp" />
+    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\obstacle_game_object.cpp" />
+    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\shader.cpp" />
+    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\sprite.cpp" />
+    <None Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\sprite_vertex_shader.glsl">
     </None>
-    <None Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\sprite_fragment_shader.glsl">
+    <None Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\sprite_fragment_shader.glsl">
     </None>
-    <ClCompile Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\player_particles.cpp" />
-    <ClCompile Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\bullet_particles.cpp" />
-    <ClCompile Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\cone_particle_system.cpp" />
-    <None Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\player_particle_vertex_shader.glsl">
+    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\player_particles.cpp" />
+    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\bullet_particles.cpp" />
+    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\cone_particle_system.cpp" />
+    <None Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\player_particle_vertex_shader.glsl">
     </None>
-    <None Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\player_particle_fragment_shader.glsl">
+    <None Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\player_particle_fragment_shader.glsl">
     </None>
-    <None Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\bullet_particle_fragment_shader.glsl">
+    <None Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\bullet_particle_fragment_shader.glsl">
     </None>
-    <ClCompile Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\particles.cpp" />
-    <ClCompile Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\particle_system.cpp" />
-    <None Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\particle_vertex_shader.glsl">
+    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\particles.cpp" />
+    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\particle_system.cpp" />
+    <None Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\particle_vertex_shader.glsl">
     </None>
-    <None Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\particle_fragment_shader.glsl">
+    <None Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\particle_fragment_shader.glsl">
     </None>
   </ItemGroup>
   <ItemGroup>

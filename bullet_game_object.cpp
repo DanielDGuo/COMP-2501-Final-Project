@@ -39,7 +39,6 @@ namespace game {
 		if (timeSinceLastRicochet > 0.5)
 		{
 			timeSinceLastRicochet = 0;
-			ricocheted = true;
 			glm::vec3 objPos = obj->GetPosition();
 			float objAngle = obj->getRotation();
 			float normalAngle = objAngle - 3.1415/2;
@@ -84,7 +83,11 @@ namespace game {
 			rotAngle = direction - 3.1415/2;
 
 			//Activate the bullet's effect
-			Activate();
+			if (!ricocheted)
+			{
+				ricocheted = true;
+				Activate();
+			}
 		}
 	}
 

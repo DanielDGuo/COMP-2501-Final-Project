@@ -25,7 +25,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{9FEF00CF-6994-3EFA-828B-C7BED93E4557}</ProjectGuid>
+    <ProjectGuid>{BE55CA60-824F-3093-B10B-98C391359C7A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0.22000.0</WindowsTargetPlatformVersion>
     <Platform>x64</Platform>
@@ -69,7 +69,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\Scott Main\Documents\2501\Libraries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\jmcal\OneDrive\Desktop\Uni\COMP 2501\Libraries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -79,7 +79,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\Scott Main\Documents\2501\Libraries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\jmcal\OneDrive\Desktop\Uni\COMP 2501\Libraries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -89,7 +89,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\Scott Main\Documents\2501\Libraries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\jmcal\OneDrive\Desktop\Uni\COMP 2501\Libraries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -99,7 +99,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\Scott Main\Documents\2501\Libraries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\jmcal\OneDrive\Desktop\Uni\COMP 2501\Libraries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -110,8 +110,8 @@
   <ItemGroup>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\bin\FinalProj.vcxproj">
-      <Project>{5001F611-C608-3F38-82B4-A529B565CBD7}</Project>
+    <ProjectReference Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\bin\FinalProj.vcxproj">
+      <Project>{62AB36DC-D2CF-3CD3-BD9D-F24628C16EA3}</Project>
       <Name>FinalProj</Name>
     </ProjectReference>
   </ItemGroup>

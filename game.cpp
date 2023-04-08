@@ -483,30 +483,23 @@ namespace game {
 
 				//vector from bullet to next position
 				glm::vec3 ray = nextpos - curpos;
+				float raylength = sqrt(pow(ray.x, 2) + pow(ray.y, 2));
 				
-				//Create a vector for the obstacle
-				glm::vec3 obsVector = obstacle->getEndPos() - obstacle->getStartPos();
+				//Get the start and end positions of the wall
+				glm::vec3 obsStart = obstacle->getStartPos();
+				glm::vec3 obsEnd = obstacle->getEndPos();
 
-				//asx = curpos.x,	asy = curpos.y,		Adx = ray.x,			Ady = ray.y
-				//bsx = obspos.x,	bsy = obspos.y,		Bdx = obsVector.x,		Bdy = obsVector.y
+				//Compute the collision points along the ray's path
+				glm::vec3 tMin = (obsStart - curpos) / ray;
+				glm::vec3 tMax = (obsEnd - curpos) / ray;
+				glm::vec3 t1 = glm::min(tMin, tMax);
+				glm::vec3 t2 = glm::max(tMin, tMax);
+				float tNear = std::max(std::max(t1.x, t1.y), t1.z);
+				float tFar = std::min(std::min(t2.x, t2.y), t2.z);
 
-				//Calculate the lengths of each vector needed for the rays to intersect
-				float u = (curpos.x * obsVector.x + obsVector.y * obspos.x - obspos.y * obsVector.x - obsVector.y * curpos.x)
-					/ (curpos.x * obsVector.y - ray.y * obsVector.x);
-				float v = (curpos.x - obspos.x + (ray.x * u)) / obsVector.x;
-
-				std::cout << "(u: " << u << ", v: " << v << ")" << std::endl;
-
-				//Check if both lengths are less than 1 and greater than 0
-				if (u <= 1 && u > 0 && v <= 1 && v > 0)
-				{					
-					//Set the bullet's position to be against the wall
-					glm::vec3 intersect;
-					intersect.x = curpos.x + (ray.x * u);
-					intersect.y = curpos.y + (ray.y * u);
-					intersect.z = 0.0f;
-					bullet->SetPosition(intersect);
-
+				//Check if the collision is within one ray length
+				if (tFar > 0 && tNear <= raylength && tNear <= tFar)
+				{
 					//Ricochet the bullet
 					bullet->Ricochet(obstacle);
 				}
