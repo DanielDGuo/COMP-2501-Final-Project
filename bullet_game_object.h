@@ -21,7 +21,7 @@ namespace game {
 
 		int getDamage() { return damage; }
 
-	private:
+	protected:
 		//Bullet damage
 		int damage;
 		//determines if it's an ally bullet

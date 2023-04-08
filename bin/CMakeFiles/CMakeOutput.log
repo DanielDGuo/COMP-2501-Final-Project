@@ -1,13 +1,13 @@
 The system is: Windows - 10.0.19044 - AMD64
 Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
 Compiler:  
-Build flags: 
+Build flags: /DWIN32;/D_WINDOWS
 Id flags:  
 
 The output was:
 0
 MSBuild version 17.4.1+9a89d02ff for .NET Framework
-Build started 2023-04-08 5:40:07 PM.
+Build started 2023-04-08 7:33:16 PM.
 Project "C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\bin\CMakeFiles\3.25.2\CompilerIdC\CompilerIdC.vcxproj" on node 1 (default targets).
 PrepareForBuild:
   Creating directory "Debug\".
@@ -33,7 +33,7 @@ Build succeeded.
     0 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:00.89
+Time Elapsed 00:00:00.88
 
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -44,13 +44,13 @@ The C compiler identification is MSVC, found in "C:/Users/jmcal/OneDrive/Documen
 
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
 Compiler:  
-Build flags: 
+Build flags: /DWIN32;/D_WINDOWS;/GR;/EHsc
 Id flags:  
 
 The output was:
 0
 MSBuild version 17.4.1+9a89d02ff for .NET Framework
-Build started 2023-04-08 5:40:08 PM.
+Build started 2023-04-08 7:33:17 PM.
 Project "C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\bin\CMakeFiles\3.25.2\CompilerIdCXX\CompilerIdCXX.vcxproj" on node 1 (default targets).
 PrepareForBuild:
   Creating directory "Debug\".
@@ -76,7 +76,7 @@ Build succeeded.
     0 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:00.65
+Time Elapsed 00:00:00.62
 
 
 Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -86,26 +86,26 @@ Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" p
 The CXX compiler identification is MSVC, found in "C:/Users/jmcal/OneDrive/Documents/GitHub/COMP-2501-Final-Project/bin/CMakeFiles/3.25.2/CompilerIdCXX/CompilerIdCXX.exe"
 
 Detecting C compiler ABI info compiled with the following output:
-Change Dir: C:/Users/jmcal/OneDrive/Documents/GitHub/COMP-2501-Final-Project/bin/CMakeFiles/CMakeScratch/TryCompile-22gypx
+Change Dir: C:/Users/jmcal/OneDrive/Documents/GitHub/COMP-2501-Final-Project/bin/CMakeFiles/CMakeScratch/TryCompile-9pga18
 
-Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_ac095.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:m && MSBuild version 17.4.1+9a89d02ff for .NET Framework
+Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_b9dae.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:m && MSBuild version 17.4.1+9a89d02ff for .NET Framework
   Microsoft (R) C/C++ Optimizing Compiler Version 19.34.31937 for x64
   CMakeCCompilerABI.c
   Copyright (C) Microsoft Corporation.  All rights reserved.
-  cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_ac095.dir\Debug\\" /Fd"cmTC_ac095.dir\Debug\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\Program Files\CMake\share\cmake-3.25\Modules\CMakeCCompilerABI.c"
-  cmTC_ac095.vcxproj -> C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\bin\CMakeFiles\CMakeScratch\TryCompile-22gypx\Debug\cmTC_ac095.exe
+  cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_b9dae.dir\Debug\\" /Fd"cmTC_b9dae.dir\Debug\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\Program Files\CMake\share\cmake-3.25\Modules\CMakeCCompilerABI.c"
+  cmTC_b9dae.vcxproj -> C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\bin\CMakeFiles\CMakeScratch\TryCompile-9pga18\Debug\cmTC_b9dae.exe
 
 
 
 Detecting CXX compiler ABI info compiled with the following output:
-Change Dir: C:/Users/jmcal/OneDrive/Documents/GitHub/COMP-2501-Final-Project/bin/CMakeFiles/CMakeScratch/TryCompile-1zo4cc
+Change Dir: C:/Users/jmcal/OneDrive/Documents/GitHub/COMP-2501-Final-Project/bin/CMakeFiles/CMakeScratch/TryCompile-t5330o
 
-Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_c87aa.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:m && MSBuild version 17.4.1+9a89d02ff for .NET Framework
+Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_19fd8.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:m && MSBuild version 17.4.1+9a89d02ff for .NET Framework
   Microsoft (R) C/C++ Optimizing Compiler Version 19.34.31937 for x64
   CMakeCXXCompilerABI.cpp
   Copyright (C) Microsoft Corporation.  All rights reserved.
-  cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_c87aa.dir\Debug\\" /Fd"cmTC_c87aa.dir\Debug\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\Program Files\CMake\share\cmake-3.25\Modules\CMakeCXXCompilerABI.cpp"
-  cmTC_c87aa.vcxproj -> C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\bin\CMakeFiles\CMakeScratch\TryCompile-1zo4cc\Debug\cmTC_c87aa.exe
+  cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_19fd8.dir\Debug\\" /Fd"cmTC_19fd8.dir\Debug\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\Program Files\CMake\share\cmake-3.25\Modules\CMakeCXXCompilerABI.cpp"
+  cmTC_19fd8.vcxproj -> C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\bin\CMakeFiles\CMakeScratch\TryCompile-t5330o\Debug\cmTC_19fd8.exe
 
 
 

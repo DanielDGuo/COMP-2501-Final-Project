@@ -12,11 +12,13 @@ set(HDRS
     player_game_object.h
     enemy_game_object.h
     temp_game_object.h
-	collectible_game_object.h
-	background_game_object.h
-	bullet_game_object.h
-	flavour_game_object.h
-	obstacle_game_object.h
+    collectible_game_object.h
+    background_game_object.h
+    bullet_game_object.h
+    standard_shot.h
+    triple_shot.h
+    flavour_game_object.h
+    obstacle_game_object.h
     shader.h
     geometry.h
     sprite.h
@@ -35,13 +37,15 @@ set(SRCS
     game_object.cpp
     main.cpp
     player_game_object.cpp
-	enemy_game_object.cpp
+    enemy_game_object.cpp
     temp_game_object.cpp
     collectible_game_object.cpp
-	background_game_object.cpp
-	bullet_game_object.cpp
-	flavour_game_object.cpp
-	obstacle_game_object.cpp
+    background_game_object.cpp
+    bullet_game_object.cpp
+    standard_shot.cpp
+    triple_shot.cpp
+    flavour_game_object.cpp
+    obstacle_game_object.cpp
     shader.cpp
     sprite.cpp
     sprite_vertex_shader.glsl
