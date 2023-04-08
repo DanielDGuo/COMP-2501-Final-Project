@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.18)
 
 # Name of project
-set(PROJ_NAME Assignment4)
+set(PROJ_NAME FinalProj)
 project(${PROJ_NAME})
 
 # Specify project files: header files and source files
@@ -20,10 +20,13 @@ set(HDRS
     shader.h
     geometry.h
     sprite.h
+    particles.h
+    particle_system.h
 	
     player_particles.h
     bullet_particles.h
     cone_particle_system.h
+    
 )
  
 set(SRCS
@@ -52,6 +55,13 @@ set(SRCS
     player_particle_vertex_shader.glsl
     player_particle_fragment_shader.glsl
     bullet_particle_fragment_shader.glsl
+
+
+
+    particles.cpp
+    particle_system.cpp
+    particle_vertex_shader.glsl
+    particle_fragment_shader.glsl
 )
 
 # Add path name to configuration file

@@ -6,7 +6,7 @@
 
 namespace game {
 
-	BulletParticles::BulletParticles(void) : Geometry()
+	BulletParticles::BulletParticles() : Geometry()
 	{
 		// Initialize variables with default values
 		vbo_ = 0;

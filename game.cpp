@@ -17,6 +17,8 @@
 #include "cone_particle_system.h"
 #include "player_particles.h"
 #include "bullet_particles.h"
+#include "particles.h"
+#include "particle_system.h"
 #include "game.h"
 
 namespace game {
@@ -81,12 +83,20 @@ namespace game {
 		bullet_particles_ = new BulletParticles();
 		bullet_particles_->CreateGeometry();
 
+
+		// Initialize player particle geometry
+		explosionPart_ = new Particles(1);
+		explosionPart_->CreateGeometry();
+
 		// Initialize sprite geometry
 		sprite_ = new Sprite();
 		sprite_->CreateGeometry();
 
 		// Initialize player particle shader
 		player_particle_shader_.Init((resources_directory_g + std::string("/player_particle_vertex_shader.glsl")).c_str(), (resources_directory_g + std::string("/player_particle_fragment_shader.glsl")).c_str());
+
+		// Initialize explosion particle shader
+		particle_shader_.Init((resources_directory_g + std::string("/particle_vertex_shader.glsl")).c_str(), (resources_directory_g + std::string("/particle_fragment_shader.glsl")).c_str());
 
 		// Initialize player particle shader
 		bullet_particle_shader_.Init((resources_directory_g + std::string("/player_particle_vertex_shader.glsl")).c_str(), (resources_directory_g + std::string("/bullet_particle_fragment_shader.glsl")).c_str());
@@ -532,6 +542,13 @@ namespace game {
 					if (((u1 >= 0 && u1 <= 1) || (u2 >= 0 && u2 <= 1)) && enemyObject->getTimeOfDeath() == NULL) {
 						enemyObject->setHealth(enemyObject->getHealth() - bullet->getDamage());
 						bullet->setDelStatus(true);
+						//implement explosion creation here
+						ParticleSystem* particles = new ParticleSystem(glm::vec3(0.0f, -0.5f, 0.0f), explosionPart_, &particle_shader_, tex_[4], enemyObject, 2);
+						particles->SetScale(0.2);
+						particles->setLife(2);
+						particles->setSpawntime(current_time_);
+						
+						background_game_objects_.push_back(particles);
 					}
 				}
 				float distance = glm::length(enemyObject->GetPosition() - bullet->GetPosition());
@@ -588,6 +605,13 @@ namespace game {
 
 			//update the object
 			background->Update(delta_time);
+
+			if (background->getLife() < 0 && background->getLife() != NULL) {
+				background_game_objects_.erase(background_game_objects_.begin() + i);
+				delete background;
+				continue;
+			}
+
 
 			//render the object
 			background->Render(view_matrix, current_time_);

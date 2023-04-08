@@ -11,14 +11,14 @@ namespace game {
     class BulletParticles : public Geometry {
 
         public:
-            BulletParticles(void);
+            BulletParticles();
 
             // Create the geometry (called once)
             void CreateGeometry(void);
 
             // Use the geometry
             void SetGeometry(GLuint shader_program);
-
+       
     }; // class Particles
 } // namespace game
 

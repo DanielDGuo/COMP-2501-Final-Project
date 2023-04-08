@@ -1,124 +1,124 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\file_utils.cpp">
+    <ClCompile Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\file_utils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\game.cpp">
+    <ClCompile Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\game_object.cpp">
+    <ClCompile Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\game_object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\main.cpp">
+    <ClCompile Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\player_game_object.cpp">
+    <ClCompile Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\player_game_object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\enemy_game_object.cpp">
+    <ClCompile Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\enemy_game_object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\temp_game_object.cpp">
+    <ClCompile Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\temp_game_object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\collectible_game_object.cpp">
+    <ClCompile Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\collectible_game_object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\background_game_object.cpp">
+    <ClCompile Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\background_game_object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\bullet_game_object.cpp">
+    <ClCompile Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\bullet_game_object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\flavour_game_object.cpp">
+    <ClCompile Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\flavour_game_object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\obstacle_game_object.cpp">
+    <ClCompile Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\obstacle_game_object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\shader.cpp">
+    <ClCompile Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\sprite.cpp">
+    <ClCompile Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\sprite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\player_particles.cpp">
+    <ClCompile Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\player_particles.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\bullet_particles.cpp">
+    <ClCompile Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\bullet_particles.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\cone_particle_system.cpp">
+    <ClCompile Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\cone_particle_system.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\file_utils.h">
+    <ClInclude Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\file_utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\game.h">
+    <ClInclude Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\game_object.h">
+    <ClInclude Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\game_object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\player_game_object.h">
+    <ClInclude Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\player_game_object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\enemy_game_object.h">
+    <ClInclude Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\enemy_game_object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\temp_game_object.h">
+    <ClInclude Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\temp_game_object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\collectible_game_object.h">
+    <ClInclude Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\collectible_game_object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\background_game_object.h">
+    <ClInclude Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\background_game_object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\bullet_game_object.h">
+    <ClInclude Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\bullet_game_object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\flavour_game_object.h">
+    <ClInclude Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\flavour_game_object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\obstacle_game_object.h">
+    <ClInclude Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\obstacle_game_object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\shader.h">
+    <ClInclude Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\geometry.h">
+    <ClInclude Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\geometry.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\sprite.h">
+    <ClInclude Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\sprite.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\player_particles.h">
+    <ClInclude Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\player_particles.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\bullet_particles.h">
+    <ClInclude Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\bullet_particles.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\cone_particle_system.h">
+    <ClInclude Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\cone_particle_system.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\sprite_vertex_shader.glsl" />
-    <None Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\sprite_fragment_shader.glsl" />
-    <None Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\player_particle_vertex_shader.glsl" />
-    <None Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\player_particle_fragment_shader.glsl" />
-    <None Include="C:\Users\jmcal\OneDrive\Documents\GitHub\COMP-2501-Final-Project\bullet_particle_fragment_shader.glsl" />
+    <None Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\sprite_vertex_shader.glsl" />
+    <None Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\sprite_fragment_shader.glsl" />
+    <None Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\player_particle_vertex_shader.glsl" />
+    <None Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\player_particle_fragment_shader.glsl" />
+    <None Include="C:\Users\Scott Main\Documents\GitHub\COMP-2501-Final-Project\bullet_particle_fragment_shader.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
-      <UniqueIdentifier>{17C39D16-BECD-3E55-8EE4-B73DD84DCA02}</UniqueIdentifier>
+      <UniqueIdentifier>{C5D33D59-C254-3B40-8866-1283BA824E37}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{6CF7ADB7-2E4C-39AF-94ED-990D8537BEAF}</UniqueIdentifier>
+      <UniqueIdentifier>{4FD769CD-54A9-3255-AEBE-81022BD7B3CB}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

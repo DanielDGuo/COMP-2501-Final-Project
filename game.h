@@ -54,6 +54,9 @@ namespace game {
 		// Particle geometry for player related particles
 		Geometry* player_particles_;
 
+		// Particle geometry for explosion
+		Geometry* explosionPart_;
+
 		// Particle geometry for bullet particles
 		Geometry* bullet_particles_;
 
@@ -62,6 +65,9 @@ namespace game {
 
 		// Shader for rendering player particles
 		Shader player_particle_shader_;
+
+		// Shader for rendering explosion particles
+		Shader particle_shader_;
 
 		// Shader for rendering bullet particles
 		Shader bullet_particle_shader_;

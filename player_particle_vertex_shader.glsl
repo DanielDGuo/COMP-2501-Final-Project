@@ -27,8 +27,9 @@ void main()
     // Add phase to the time and cycle it
     acttime = mod(time + t*cycle, cycle);
 
+
     // Move particle along given direction
-    pos = vec4(vertex.x + acttime*speed*dir.x , vertex.y + acttime*speed*dir.y , 0.0, 1.0);
+    pos = vec4(vertex.x + acttime*speed*dir.x, vertex.y + acttime*speed*dir.y, 0.0, 1.0);
 
     // Add wobble effect
     //pos = vec4(vertex.x + cos(acttime)*speed*dir.x , vertex.y + sin(acttime)*speed*dir.y , 0.0, 1.0);

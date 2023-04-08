@@ -1,1 +1,1 @@
-#define RESOURCES_DIRECTORY "C:/Users/jmcal/OneDrive/Documents/GitHub/COMP-2501-Final-Project"
+#define RESOURCES_DIRECTORY "C:/Users/Scott Main/Documents/GitHub/COMP-2501-Final-Project"
