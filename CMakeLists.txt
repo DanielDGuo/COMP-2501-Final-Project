@@ -10,7 +10,12 @@ set(HDRS
     game.h
     game_object.h
     player_game_object.h
+	
     enemy_game_object.h
+    stationary_enemy.h
+    moving_enemy.h
+    kamakaze_enemy.h
+	
     temp_game_object.h
     collectible_game_object.h
     background_game_object.h
@@ -28,7 +33,6 @@ set(HDRS
     player_particles.h
     bullet_particles.h
     cone_particle_system.h
-    
 )
  
 set(SRCS
@@ -38,6 +42,9 @@ set(SRCS
     main.cpp
     player_game_object.cpp
     enemy_game_object.cpp
+    stationary_enemy.cpp
+    moving_enemy.cpp
+    kamakaze_enemy.cpp
     temp_game_object.cpp
     collectible_game_object.cpp
     background_game_object.cpp
@@ -59,8 +66,6 @@ set(SRCS
     player_particle_vertex_shader.glsl
     player_particle_fragment_shader.glsl
     bullet_particle_fragment_shader.glsl
-
-
 
     particles.cpp
     particle_system.cpp

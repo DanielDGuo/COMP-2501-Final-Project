@@ -14,6 +14,9 @@
 #include "collectible_game_object.h"
 #include "background_game_object.h"
 #include "enemy_game_object.h"
+#include "kamakaze_enemy.h"
+#include "moving_enemy.h"
+#include "stationary_enemy.h"
 #include "cone_particle_system.h"
 #include "player_particles.h"
 #include "bullet_particles.h"
@@ -170,17 +173,9 @@ namespace game {
 		// player(s)
 		player_game_objects_.push_back(new PlayerGameObject(glm::vec3(0.0f, 0.0f, 0.0f), sprite_, &sprite_shader_, tex_[0]));
 
-		// stationary enemies
-		enemy_game_objects_.push_back(new EnemyGameObject(glm::vec3(-1.0f, 1.0f, 0.0f), sprite_, &sprite_shader_, tex_[1], glm::vec3(0.0f, 0.0f, 0.0f), 0));
-		enemy_game_objects_.push_back(new EnemyGameObject(glm::vec3(1.0f, -0.5f, 0.0f), sprite_, &sprite_shader_, tex_[2], glm::vec3(0.0f, 0.0f, 0.0f), 0));
-		enemy_game_objects_.push_back(new EnemyGameObject(glm::vec3(2.0f, 2.0f, 0.0f), sprite_, &sprite_shader_, tex_[5], glm::vec3(0.0f, 0.0f, 0.0f), 0));
-
-		// moving enemies
-		srand(time(NULL));
-		enemy_game_objects_.push_back(new EnemyGameObject(glm::vec3(rand() % 5 - 2, rand() % 5 - 2, 0.0f), sprite_, &sprite_shader_, tex_[6], glm::vec3(0.0f, 0.0f, 0.0f), 1));
-		enemy_game_objects_.push_back(new EnemyGameObject(glm::vec3(rand() % 5 - 2, rand() % 5 - 2, 0.0f), sprite_, &sprite_shader_, tex_[6], glm::vec3(0.0f, 0.0f, 0.0f), 1));
-		enemy_game_objects_.push_back(new EnemyGameObject(glm::vec3(rand() % 5 - 2, rand() % 5 - 2, 0.0f), sprite_, &sprite_shader_, tex_[6], glm::vec3(0.0f, 0.0f, 0.0f), 1));
-
+		// enemies
+		enemy_game_objects_.push_back(new Stationary(glm::vec3(-1.0f, 1.0f, 0.0f), sprite_, &sprite_shader_, tex_[1], glm::vec3(2.0f, 2.0f, 0.0f)));
+		
 		//collectibles
 		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-3.0f, -2.0f, 0.0f), sprite_, &sprite_shader_, tex_[8]));
 		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-3.0f, -1.0f, 0.0f), sprite_, &sprite_shader_, tex_[8]));
@@ -347,9 +342,9 @@ namespace game {
 				//if distance is below a threshold, update the health
 				if (distance < 0.8f && enemyObject->getHealth() > 0) {
 					if (!playerObject->getInvincible()) {
-						playerObject->setHealth(playerObject->getHealth() - 1);
+						playerObject->setHealth(playerObject->getHealth() - 100);
 					}
-					enemyObject->setHealth(enemyObject->getHealth() - 1);
+					enemyObject->setHealth(enemyObject->getHealth() - 100);
 				}
 			}
 
@@ -386,20 +381,9 @@ namespace game {
 
 			if (!gameOver) {
 				PlayerGameObject* playerObject = player_game_objects_[0];
-				// Compute distance between enemy and player
-				float distance = glm::length(enemyObject->GetPosition() - playerObject->GetPosition());
-
-				// If distance is below a threshold, the player is in sight
-				if (distance < 1.6 && !enemyObject->getStationary()) {
-					enemyObject->setPatrolling(false);
-					enemyObject->setMoving(true);
-					enemyObject->setTargetLoc(playerObject->GetPosition());
-				}
-				else if (distance > 1.6 && !enemyObject->getStationary()) {
-					enemyObject->setPatrolling(true);
-					enemyObject->setMoving(false);
-				}
+				enemyObject->setPlayerLoc(playerObject->GetPosition());			
 			}
+
 			//render the object
 			enemyObject->Render(view_matrix, current_time_);
 		}
@@ -536,13 +520,16 @@ namespace game {
 					if (((u1 >= 0 && u1 <= 1) || (u2 >= 0 && u2 <= 1)) && enemyObject->getTimeOfDeath() == NULL) {
 						enemyObject->setHealth(enemyObject->getHealth() - bullet->getDamage());
 						bullet->setDelStatus(true);
-						//implement explosion creation here
-						ParticleSystem* particles = new ParticleSystem(glm::vec3(0.0f, -0.5f, 0.0f), explosionPart_, &particle_shader_, tex_[4], enemyObject, 2);
-						particles->SetScale(0.2);
-						particles->setLife(2);
-						particles->setSpawntime(current_time_);
-						
-						background_game_objects_.push_back(particles);
+
+						if (enemyObject->getHealth() <= 0) {
+							//implement explosion creation here
+							ParticleSystem* particles = new ParticleSystem(glm::vec3(0.0f, -0.5f, 0.0f), explosionPart_, &particle_shader_, tex_[4], enemyObject, 2);
+							particles->SetScale(0.2);
+							particles->setLife(2);
+							particles->setSpawntime(current_time_);
+
+							background_game_objects_.push_back(particles);
+						}
 					}
 				}
 				float distance = glm::length(enemyObject->GetPosition() - bullet->GetPosition());
@@ -684,12 +671,14 @@ namespace game {
 				//fire ally bullet every 1 seconds
 				if (glfwGetTime() > lastFireTime + 1) {
 					lastFireTime = glfwGetTime();
-					ally_bullets_.push_back(new BulletGameObject(curpos, sprite_, &sprite_shader_, tex_[10], currot + 3.1415 / 2, 1, false));
+					ally_bullets_.push_back(new BulletGameObject(curpos, sprite_, &sprite_shader_, tex_[10], currot + 3.1415 / 2, 5, false));
 
+					/*
 					// Setup particle system
 					ConeParticleSystem* bulletParticles = new ConeParticleSystem(glm::vec3(0.0f, -0.5f, 0.0f), bullet_particles_, &bullet_particle_shader_, tex_[4], ally_bullets_[ally_bullets_.size() - 1]);
 					bulletParticles->SetScale(0.1);
 					bullet_effects_.push_back(bulletParticles);
+					*/
 				}
 			}
 			if (glfwGetMouseButton(window_, GLFW_MOUSE_BUTTON_1) == GLFW_PRESS)

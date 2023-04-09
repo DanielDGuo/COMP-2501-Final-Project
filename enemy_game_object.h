@@ -9,20 +9,15 @@ namespace game {
 	class EnemyGameObject : public GameObject {
 
 	public:
-		EnemyGameObject(const glm::vec3& position, Geometry* geom, Shader* shader, GLuint texture, glm::vec3& targetLocm, int mode);
+		EnemyGameObject(const glm::vec3& position, Geometry* geom, Shader* shader, GLuint texture, int health);
 
-		void Update(double delta_time) override;
+		virtual void Update(double delta_time) override;
 
-		inline bool getStationary() { return stationary; };
-		inline void setTargetLoc(glm::vec3& newTarget) { targetLoc = newTarget; };
-		inline void setPatrolling(bool isPatrolling) { patrolling = isPatrolling; };
-		inline void setMoving(bool isMoving) { moving = isMoving; };
+		inline void setPlayerLoc(glm::vec3& playerPos) { playerLoc = playerPos; };
 
-	private:
-		bool stationary;
-		bool patrolling;
-		bool moving;
-		glm::vec3 targetLoc;
+	protected:
+		// location of player for some derived classes
+		glm::vec3 playerLoc;
 	}; // class EnemyGameObject
 
 } // namespace game
