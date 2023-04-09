@@ -7,21 +7,6 @@
 
 #include <path_config.h>
 
-#include "sprite.h"
-#include "shader.h"
-#include "player_game_object.h"
-#include "temp_game_object.h"
-#include "collectible_game_object.h"
-#include "background_game_object.h"
-#include "enemy_game_object.h"
-#include "kamakaze_enemy.h"
-#include "moving_enemy.h"
-#include "stationary_enemy.h"
-#include "cone_particle_system.h"
-#include "player_particles.h"
-#include "bullet_particles.h"
-#include "particles.h"
-#include "particle_system.h"
 #include "game.h"
 
 namespace game {
@@ -381,7 +366,8 @@ namespace game {
 
 			if (!gameOver) {
 				PlayerGameObject* playerObject = player_game_objects_[0];
-				enemyObject->setPlayerLoc(playerObject->GetPosition());			
+				enemyObject->setPlayerLoc(playerObject->GetPosition());		
+				//enemyObject->fire(enemy_bullets_, sprite_, sprite_shader_, tex_[10]);
 			}
 
 			//render the object
@@ -666,7 +652,7 @@ namespace game {
 			if (glfwGetKey(window_, GLFW_KEY_A) == GLFW_PRESS) {
 				//rotate left
 				player->setRotation(currot + rotation_increment);
-			}
+			} 
 			if (glfwGetKey(window_, GLFW_KEY_SPACE) == GLFW_PRESS) {
 				//fire ally bullet every 1 seconds
 				if (glfwGetTime() > lastFireTime + 1) {

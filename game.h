@@ -7,6 +7,7 @@
 #include <GLFW/glfw3.h>
 #include <vector>
 
+#include "sprite.h"
 #include "shader.h"
 #include "game_object.h"
 #include "collectible_game_object.h"
@@ -17,6 +18,14 @@
 #include "obstacle_game_object.h"
 #include "flavour_game_object.h"
 #include "cone_particle_system.h"
+#include "background_game_object.h"
+#include "kamakaze_enemy.h"
+#include "moving_enemy.h"
+#include "stationary_enemy.h"
+#include "player_particles.h"
+#include "bullet_particles.h"
+#include "particles.h"
+#include "particle_system.h"
 
 #define CAMERA_ZOOM 0.25
 

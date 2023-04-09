@@ -1,7 +1,9 @@
 #ifndef ENEMY_GAME_OBJECT_H_
 #define ENEMY_GAME_OBJECT_H_
 
+#include <vector>
 #include "game_object.h"
+#include "bullet_game_object.h"
 
 namespace game {
 
@@ -15,9 +17,14 @@ namespace game {
 
 		inline void setPlayerLoc(glm::vec3& playerPos) { playerLoc = playerPos; };
 
+		virtual void fire(std::vector<BulletGameObject*>& enemy_bullets_, Geometry* sprite_, Shader sprite_shader_, GLuint tex);
+
 	protected:
 		// location of player for some derived classes
 		glm::vec3 playerLoc;
+		// stores if the enemy can fire
+		bool canFire;
+
 	}; // class EnemyGameObject
 
 } // namespace game

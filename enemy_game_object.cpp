@@ -13,6 +13,7 @@ namespace game {
 	EnemyGameObject::EnemyGameObject(const glm::vec3& position, Geometry* geom, Shader* shader, GLuint texture, int health)
 		: GameObject(position, geom, shader, texture, health) {
 		playerLoc = glm::vec3(0.0f, 0.0f, 0.0f);
+		canFire = false;
 	}
 
 	void EnemyGameObject::Update(double delta_time) {
@@ -22,6 +23,10 @@ namespace game {
 			// Enemy has died. End the update.
 			return;
 		}
+	}
+
+	void EnemyGameObject::fire(std::vector<BulletGameObject*>& enemy_bullets_, Geometry* sprite_, Shader sprite_shader_, GLuint tex) {
+		//default enemies do not fire bullets
 	}
 
 } // namespace game

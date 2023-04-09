@@ -18,6 +18,7 @@ namespace game {
 
 		void Update(double delta_time) override;
 
+		void fire(std::vector<BulletGameObject*>& enemy_bullets_, Geometry* sprite_, Shader sprite_shader_, GLuint tex) override;
 	private:
 	}; // class Kamakaze
 

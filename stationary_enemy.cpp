@@ -25,6 +25,19 @@ namespace game {
 			position_.x = (trans * glm::vec4(position_, 1.0f)).x;
 			position_.y = (trans * glm::vec4(position_, 1.0f)).y;
 		}
+		else {
+			canFire = true;
+		}
+
+	}
+
+	void Stationary::fire(std::vector<BulletGameObject*>& enemy_bullets_, Geometry* sprite_, Shader sprite_shader_, GLuint tex) {
+		if (canFire) {
+			glm::vec3 dir = glm::normalize(playerLoc - position_);
+			float rotAngle = glm::atan(dir.y, dir.x);
+
+			enemy_bullets_.push_back(new BulletGameObject(position_, sprite_, &sprite_shader_, tex, rotAngle + 3.1415 / 2, 3, true));
+		}
 	}
 
 } // namespace game

@@ -21,6 +21,7 @@ namespace game {
 
 		inline void setTargetLoc(glm::vec3& newTarget) { targetLoc = newTarget; };
 
+		void fire(std::vector<BulletGameObject*>& enemy_bullets_, Geometry* sprite_, Shader sprite_shader_, GLuint tex) override;
 	private:
 		glm::vec3 targetLoc;
 		bool arrived;

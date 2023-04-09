@@ -46,16 +46,20 @@ namespace game {
 			// Set up vectors for the bullet, the object, and its normal
 			double length = sqrt(pow(velocity_.x, 2) + pow(velocity_.y, 2));
 			velocity_ /= length;
+			std::cout << "Bul Vec: (" << velocity_.x << ", " << velocity_.y << ")" << std::endl;
+			std::cout << "Length (vel): " << length << std::endl;
 
 			glm::vec3 objVector;
 			objVector.x = sin(objAngle);
 			objVector.y = cos(objAngle);
 			objVector.z = 0.0f;
+			std::cout << "Obj Vec: (" << objVector.x << ", " << objVector.y << ")" << std::endl;
 
 			glm::vec3 normalVector;
 			normalVector.x = sin(normalAngle);
 			normalVector.y = cos(normalAngle);
 			normalVector.z = 0.0f;
+			std::cout << "Nor Vec: (" << normalVector.x << ", " << normalVector.y << ")" << std::endl;
 
 			//Calculate the new angle for the bullet
 			float dot = glm::dot(velocity_, normalVector);

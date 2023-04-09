@@ -24,4 +24,8 @@ namespace game {
 		position_.y = (trans * glm::vec4(position_, 1.0f)).y;
 	}
 
+	void Kamakaze::fire(std::vector<BulletGameObject*>& enemy_bullets_, Geometry* sprite_, Shader sprite_shader_, GLuint tex) {
+		//kamakaze enemies do not fire bullets
+	}
+
 } // namespace game
