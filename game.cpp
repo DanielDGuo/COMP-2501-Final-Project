@@ -172,11 +172,24 @@ namespace game {
 		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-1.0f, -1.0f, 0.0f), sprite_, &sprite_shader_, tex_[8]));
 
 		// Setup background
-		Background* background = new Background(glm::vec3(0.0f, 0.0f, 0.0f), sprite_, &sprite_shader_, tex_[3]);
-		background->SetScale(100.0);
-		background->SetTileNum(10);
+		int j = -1;
+		float width = 10;
+		float height = 10;
+		GLuint tex;
+		int p;
+		for (int i = 0; i < 9; i++) {
+
+
+			tex = tex_[i];
+			Background* background = new Background(glm::vec3(0.0f, 0.0f, 0.0f), sprite_, &sprite_shader_, tex);
+			background->SetScale(10);
+			if (i % 3 == 0) j++;
+			background->SetPosition(glm::vec3((j * width) - width, ((i % 3) * height) - height, 0.0f));
+			background_game_objects_.push_back(background);
+
+		}
 		
-		background_game_objects_.push_back(background);
+		//background_game_objects_.push_back(background);
 
 		// Setup particle system
 		ConeParticleSystem* playerParticles = new ConeParticleSystem(glm::vec3(0.0f, -0.5f, 0.0f), player_particles_, &player_particle_shader_, tex_[4], player_game_objects_[0]);
@@ -749,7 +762,7 @@ namespace game {
 		pos /= CAMERA_ZOOM;
 
 		//Get the player's position
-		glm::vec3 playerPos = -player_game_objects_[0]->GetPosition();
+		glm::vec3 playerPos = player_game_objects_[0]->GetPosition();
 
 		//Translate by the player's position
 		pos += playerPos;
