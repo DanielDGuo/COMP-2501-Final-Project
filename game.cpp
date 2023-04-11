@@ -172,24 +172,11 @@ namespace game {
 		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-1.0f, -1.0f, 0.0f), sprite_, &sprite_shader_, tex_[8]));
 
 		// Setup background
-		int j = -1;
-		float width = 10;
-		float height = 10;
-		GLuint tex;
-		int p;
-		for (int i = 0; i < 9; i++) {
-
-
-			tex = tex_[i];
-			Background* background = new Background(glm::vec3(0.0f, 0.0f, 0.0f), sprite_, &sprite_shader_, tex);
-			background->SetScale(10);
-			if (i % 3 == 0) j++;
-			background->SetPosition(glm::vec3((j * width) - width, ((i % 3) * height) - height, 0.0f));
-			background_game_objects_.push_back(background);
-
-		}
+		Background* background = new Background(glm::vec3(0.0f, 0.0f, 0.0f), sprite_, &sprite_shader_, tex_[3]);
+		background->SetScale(100.0);
+		background->SetTileNum(10);
 		
-		//background_game_objects_.push_back(background);
+		background_game_objects_.push_back(background);
 
 		// Setup particle system
 		ConeParticleSystem* playerParticles = new ConeParticleSystem(glm::vec3(0.0f, -0.5f, 0.0f), player_particles_, &player_particle_shader_, tex_[4], player_game_objects_[0]);
@@ -380,7 +367,7 @@ namespace game {
 			if (!gameOver) {
 				PlayerGameObject* playerObject = player_game_objects_[0];
 				enemyObject->setPlayerLoc(playerObject->GetPosition());		
-				//enemyObject->fire(enemy_bullets_, sprite_, sprite_shader_, tex_[10]);
+				enemyObject->fire(enemy_bullets_, sprite_, &sprite_shader_, tex_[10]);
 			}
 
 			//render the object
@@ -671,13 +658,6 @@ namespace game {
 				if (glfwGetTime() > lastFireTime + 1) {
 					lastFireTime = glfwGetTime();
 					ally_bullets_.push_back(new BulletGameObject(curpos, sprite_, &sprite_shader_, tex_[10], currot + 3.1415 / 2, 5, false));
-
-					/*
-					// Setup particle system
-					ConeParticleSystem* bulletParticles = new ConeParticleSystem(glm::vec3(0.0f, -0.5f, 0.0f), bullet_particles_, &bullet_particle_shader_, tex_[4], ally_bullets_[ally_bullets_.size() - 1]);
-					bulletParticles->SetScale(0.1);
-					bullet_effects_.push_back(bulletParticles);
-					*/
 				}
 			}
 			if (glfwGetMouseButton(window_, GLFW_MOUSE_BUTTON_1) == GLFW_PRESS)

@@ -31,7 +31,6 @@ namespace game {
 			position_.y = (trans * glm::vec4(position_, 1.0f)).y;
 
 		}else{//rotate around targetLoc
-			canFire = true;
 			arrived = true;
 			glm::mat4 trans = glm::mat4(1.0f);
 
@@ -46,11 +45,13 @@ namespace game {
 		}
 	}
 
-	void Moving::fire(std::vector<BulletGameObject*>& enemy_bullets_, Geometry* sprite_, Shader sprite_shader_, GLuint tex) {
-		if (canFire) {
+	void Moving::fire(std::vector<BulletGameObject*>& enemy_bullets_, Geometry* sprite_, Shader* sprite_shader_, GLuint tex) {
+		if (arrived && lastFireTime + 3.0f < glfwGetTime()) {
+			lastFireTime = glfwGetTime();
 			glm::vec3 dir = glm::normalize(playerLoc - position_);
 			float rotAngle = glm::atan(dir.y, dir.x);
-			enemy_bullets_.push_back(new BulletGameObject(position_, sprite_, &sprite_shader_, tex, rotAngle + 3.1415 / 2, 1, true));
+
+			enemy_bullets_.push_back(new BulletGameObject(position_, sprite_, sprite_shader_, tex, rotAngle, 3, true));
 		}
 	}
 

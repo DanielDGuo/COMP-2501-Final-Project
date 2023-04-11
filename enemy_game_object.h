@@ -17,13 +17,15 @@ namespace game {
 
 		inline void setPlayerLoc(glm::vec3& playerPos) { playerLoc = playerPos; };
 
-		virtual void fire(std::vector<BulletGameObject*>& enemy_bullets_, Geometry* sprite_, Shader sprite_shader_, GLuint tex);
+		virtual void fire(std::vector<BulletGameObject*>& enemy_bullets_, Geometry* sprite_, Shader* sprite_shader_, GLuint tex);
 
 	protected:
 		// location of player for some derived classes
 		glm::vec3 playerLoc;
 		// stores if the enemy can fire
-		bool canFire;
+		float lastFireTime;
+		//if it has arrived at position or not
+		bool arrived;
 
 	}; // class EnemyGameObject
 
