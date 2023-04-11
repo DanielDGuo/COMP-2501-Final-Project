@@ -749,7 +749,7 @@ namespace game {
 		pos /= CAMERA_ZOOM;
 
 		//Get the player's position
-		glm::vec3 playerPos = -player_game_objects_[0]->GetPosition();
+		glm::vec3 playerPos = player_game_objects_[0]->GetPosition();
 
 		//Translate by the player's position
 		pos += playerPos;
