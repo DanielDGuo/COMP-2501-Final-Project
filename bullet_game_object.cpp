@@ -1,7 +1,7 @@
 #include "bullet_game_object.h"
 #include <GLFW/glfw3.h>
 #include <iostream>
-#include <glm/gtc/matrix_transform.hpp> 
+#include <glm/gtc/matrix_transform.hpp>
 
 namespace game {
 
@@ -33,7 +33,7 @@ namespace game {
 		}
 	}
 
-	void BulletGameObject::Ricochet(GameObject* obj)
+	void BulletGameObject::Ricochet(ObstacleObject* obj)
 	{
 		std::cout << timeSinceLastRicochet << std::endl;
 		if (timeSinceLastRicochet > 0.5)
@@ -49,10 +49,7 @@ namespace game {
 			std::cout << "Bul Vec: (" << velocity_.x << ", " << velocity_.y << ")" << std::endl;
 			std::cout << "Length (vel): " << length << std::endl;
 
-			glm::vec3 objVector;
-			objVector.x = sin(objAngle);
-			objVector.y = cos(objAngle);
-			objVector.z = 0.0f;
+			glm::vec3 objVector = obj->getEndPos() - obj->getStartPos();
 			std::cout << "Obj Vec: (" << objVector.x << ", " << objVector.y << ")" << std::endl;
 
 			glm::vec3 normalVector;

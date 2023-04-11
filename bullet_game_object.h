@@ -2,6 +2,7 @@
 #define BULLET_GAME_OBJECT_H_
 
 #include "game_object.h"
+#include "obstacle_game_object.h"
 
 namespace game {
 
@@ -14,7 +15,7 @@ namespace game {
 		void Update(double delta_time) override;
 
 		//Activates the ricochet for the given bullet
-		void Ricochet(GameObject* obj);
+		void Ricochet(ObstacleObject* obj);
 
 		//Activates the unique effect of the given bullet
 		virtual void Activate();
