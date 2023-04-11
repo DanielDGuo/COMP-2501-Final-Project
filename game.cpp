@@ -38,6 +38,7 @@ namespace game {
 			throw(std::runtime_error(std::string("Could not initialize the GLFW library")));
 		}
 
+		srand(time(NULL));
 		// Set window to not resizable
 		// Required or else the calculation to get cursor pos to screenspace will be incorrect
 		glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
@@ -177,14 +178,19 @@ namespace game {
 		float height = 10;
 		GLuint tex;
 		int p;
-		for (int i = 0; i < 9; i++) {
+		int ran;
+		for (int i = 0; i < 25; i++) {
 
-
-			tex = tex_[i];
+			p = 3;
+			ran = rand() % 6 + 1;
+			if (ran == 1) p = 13;
+			if (ran == 2) p = 14;
+			if (ran == 3) p = 15;
+			tex = tex_[p];
 			Background* background = new Background(glm::vec3(0.0f, 0.0f, 0.0f), sprite_, &sprite_shader_, tex);
 			background->SetScale(10);
-			if (i % 3 == 0) j++;
-			background->SetPosition(glm::vec3((j * width) - width, ((i % 3) * height) - height, 0.0f));
+			if (i % 5 == 0) j++;
+			background->SetPosition(glm::vec3((j * width) - 2*width, ((i % 5) * height) - 2*height, 0.0f));
 			background_game_objects_.push_back(background);
 
 		}
@@ -247,6 +253,9 @@ namespace game {
 		SetTexture(tex_[10], (resources_directory_g + std::string("/textures/bullet.png")).c_str());
 		SetTexture(tex_[11], (resources_directory_g + std::string("/textures/blade.png")).c_str());
 		SetTexture(tex_[12], (resources_directory_g + std::string("/textures/wall.png")).c_str());
+		SetTexture(tex_[13], (resources_directory_g + std::string("/textures/stars1.png")).c_str());
+		SetTexture(tex_[14], (resources_directory_g + std::string("/textures/stars2.png")).c_str());
+		SetTexture(tex_[15], (resources_directory_g + std::string("/textures/stars3.png")).c_str());
 		glBindTexture(GL_TEXTURE_2D, tex_[0]);
 	}
 
