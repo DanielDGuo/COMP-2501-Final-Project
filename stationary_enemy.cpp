@@ -32,7 +32,7 @@ namespace game {
 	}
 
 	void Stationary::fire(std::vector<BulletGameObject*>& enemy_bullets_, Geometry* sprite_, Shader* sprite_shader_, GLuint tex) {
-		if (arrived && lastFireTime + 3.0f < glfwGetTime()) {
+		if (arrived && lastFireTime + 3.0f < glfwGetTime() && health > 0) {
 			lastFireTime = glfwGetTime();
 			glm::vec3 dir = glm::normalize(playerLoc - position_);
 			float rotAngle = glm::atan(dir.y, dir.x);

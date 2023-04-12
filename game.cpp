@@ -166,7 +166,7 @@ namespace game {
 		player_game_objects_.push_back(player);
 
 		// enemies
-		enemy_game_objects_.push_back(new Stationary(glm::vec3(-1.0f, 1.0f, 0.0f), sprite_, &sprite_shader_, tex_[1], glm::vec3(2.0f, 2.0f, 0.0f)));
+		//enemy_game_objects_.push_back(new Stationary(glm::vec3(-1.0f, 1.0f, 0.0f), sprite_, &sprite_shader_, tex_[1], glm::vec3(2.0f, 2.0f, 0.0f)));
 		
 
 		TextGameObject* text = new TextGameObject(glm::vec3(-2.0f, -3.0f, 0.0f), sprite_, &text_shader_, tex_[18], player);
@@ -597,8 +597,95 @@ namespace game {
 			//update the object
 			bullet->Update(delta_time);
 
+			//Handle collision with obstacles
+			for (int j = 0; j < obstacles_.size(); j++)
+			{
+				ObstacleObject* obstacle = obstacles_[j];
+
+				glm::vec3 curpos = bullet->GetPosition();
+				glm::vec3 nextpos = bullet->GetVelocity();
+				nextpos *= delta_time;
+				nextpos += curpos;
+
+				//Get the obstacle position, length, and rotation angle
+				glm::vec3 obspos = obstacle->GetPosition();
+				float obslength = obstacle->GetScalex();
+				float obsangle = obstacle->getRotation();
+
+				//vector from bullet to next position
+				glm::vec3 ray = nextpos - curpos;
+				float raylength = sqrt(pow(ray.x, 2) + pow(ray.y, 2));
+
+				//Get the start and end positions of the wall
+				glm::vec3 obsStart = obstacle->getStartPos();
+				glm::vec3 obsEnd = obstacle->getEndPos();
+
+				//Compute the collision points along the ray's path
+				glm::vec3 tMin = (obsStart - curpos) / ray;
+				glm::vec3 tMax = (obsEnd - curpos) / ray;
+				glm::vec3 t1 = glm::min(tMin, tMax);
+				glm::vec3 t2 = glm::max(tMin, tMax);
+				float tNear = std::max(std::max(t1.x, t1.y), t1.z);
+				float tFar = std::min(std::min(t2.x, t2.y), t2.z);
+
+				//Check if the collision is within one ray length
+				if (tFar > 0 && tNear <= raylength && tNear <= tFar)
+				{
+					//Ricochet the bullet
+					bullet->Ricochet(obstacle);
+				}
+			}
+
+			//Handle collision with enemies
+			for (int j = 0; j < player_game_objects_.size(); j++) {
+				PlayerGameObject* player = player_game_objects_[j];
+
+				glm::vec3 curpos = bullet->GetPosition();
+				glm::vec3 nextpos = bullet->GetVelocity();
+				nextpos *= delta_time;
+				nextpos += curpos;
+
+				glm::vec3 playerpos = player->GetPosition();
+				//get the circle radius. Assume scale x = scale y.
+				float playerscale = player->GetScalex();
+
+				//vector from bullet to next position
+				glm::vec3 ray = nextpos - curpos;
+				//vector from bullet to player
+				glm::vec3 distFromPlayer = playerpos - curpos;
+
+				float a = glm::dot(ray, ray);
+				float b = 2 * glm::dot(ray, (curpos - playerpos));
+				float c = glm::dot(distFromPlayer, distFromPlayer) - (playerscale * playerscale);
+
+				if (((b * b) - (4 * a * c)) > 0) {
+					//detected an enemy on the line of travel
+					float u1 = (-b + sqrt((b * b) - (4 * a * c))) / (2 * a);
+					float u2 = (-b - sqrt((b * b) - (4 * a * c))) / (2 * a);
+
+					//if the hitbox intersects the bullet, register a hit
+					if (((u1 >= 0 && u1 <= 1) || (u2 >= 0 && u2 <= 1)) && player->getTimeOfDeath() == NULL) {
+						player->setHealth(player->getHealth() - bullet->getDamage());
+						bullet->setDelStatus(true);
+
+						if (player->getHealth() <= 0) {
+							//implement explosion creation here
+							ParticleSystem* particles = new ParticleSystem(glm::vec3(0.0f, -0.5f, 0.0f), explosionPart_, &particle_shader_, tex_[4], player, 2);
+							particles->SetScale(0.2);
+							particles->setLife(2);
+							particles->setSpawntime(current_time_);
+
+							background_game_objects_.push_back(particles);
+						}
+					}
+				}
+				float distance = glm::length(player->GetPosition() - bullet->GetPosition());
+			}
+
+
 			//deletes objects requesting deletion. skips collision detection
 			if (bullet->getDelStatus()) {
+
 				enemy_bullets_.erase(enemy_bullets_.begin() + i);
 			}
 

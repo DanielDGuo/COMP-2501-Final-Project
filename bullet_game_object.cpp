@@ -13,7 +13,7 @@ namespace game {
 	BulletGameObject::BulletGameObject(const glm::vec3& position, Geometry* geom, Shader* shader, GLuint texture, float direction, int dam, bool enemy)
 		: GameObject(position, geom, shader, texture, 1) {
 		spawnTime = glfwGetTime();
-		rotAngle = direction - 3.1415/2;
+		rotAngle = direction - 3.1415 / 2;
 		velocity_ = glm::vec3(cos(direction), sin(direction), 0.0f);
 		velocity_ *= 8;
 		damage = dam;
@@ -35,10 +35,27 @@ namespace game {
 
 	void BulletGameObject::Ricochet(ObstacleObject* obj)
 	{
-		std::cout << timeSinceLastRicochet << std::endl;
 		if (timeSinceLastRicochet > 0.5)
 		{
 			timeSinceLastRicochet = 0;
+			
+			//turns the wall into a vector pointing in the direction of the wall
+			glm::vec3 wall = glm::vec3(glm::cos(obj->getRotation()) , glm::sin(obj->getRotation()), 0);
+
+			//gets the dot product of the bullet vector and the wall; i.e how much of the bullet's velocity
+			//can be represented by the wall
+			glm::vec3 wallSegment = wall * glm::dot(velocity_, wall);
+
+			//subtracts the previously found dot product, producing a vector that is normal to the wall. 
+			//It's then flipped, and the wall segment is added back in
+			velocity_ = -(velocity_ - wallSegment) + wallSegment;
+
+			//fixes the rotation
+			rotAngle = glm::atan(velocity_.y, velocity_.x) - 3.1415/2;
+
+
+			//Sorry Justin
+			/*
 			glm::vec3 objPos = obj->GetPosition();
 			float objAngle = obj->getRotation();
 			float normalAngle = objAngle - 3.1415/2;
@@ -71,6 +88,7 @@ namespace game {
 			velocity_ = glm::vec3(cos(direction), sin(direction), 0.0f);
 			velocity_ *= length;
 			rotAngle = direction - 3.1415/2;
+			*/
 
 			//Activate the bullet's effect
 			if (!ricocheted)
