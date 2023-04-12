@@ -9,10 +9,17 @@ namespace game {
     class CollectibleObject : public GameObject {
 
         public:
-            CollectibleObject(const glm::vec3 &position, Geometry *geom, Shader *shader, GLuint texture);
+            CollectibleObject(const glm::vec3& position, Geometry* geom, Shader* shader, GLuint texture, int t);
 
             // Update function
             void Update(double delta_time) override;
+            int getType() { return type; }
+    private:
+        int type;
+        //0 is invin
+        //1 is health++
+        //2 is wall ++
+
     }; // class TempGameObject
 
 } // namespace game

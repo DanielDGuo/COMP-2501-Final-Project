@@ -9,8 +9,9 @@ namespace game {
 	It overrides GameObject's update method, so that you can check for input to change the velocity of the player
 */
 
-	CollectibleObject::CollectibleObject(const glm::vec3 &position, Geometry *geom, Shader *shader, GLuint texture)
+	CollectibleObject::CollectibleObject(const glm::vec3 &position, Geometry *geom, Shader *shader, GLuint texture, int t)
 		: GameObject(position, geom, shader, texture, 1) {
+		type = t;
 	}
 
 void CollectibleObject::Update(double delta_time) {

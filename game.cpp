@@ -38,6 +38,8 @@ namespace game {
 			throw(std::runtime_error(std::string("Could not initialize the GLFW library")));
 		}
 
+		wallStorage = MAX_WALLS;
+
 		srand(time(NULL));
 		// Set window to not resizable
 		// Required or else the calculation to get cursor pos to screenspace will be incorrect
@@ -163,14 +165,14 @@ namespace game {
 		enemy_game_objects_.push_back(new Stationary(glm::vec3(-1.0f, 1.0f, 0.0f), sprite_, &sprite_shader_, tex_[1], glm::vec3(2.0f, 2.0f, 0.0f)));
 		
 		//collectibles
-		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-3.0f, -2.0f, 0.0f), sprite_, &sprite_shader_, tex_[8]));
-		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-3.0f, -1.0f, 0.0f), sprite_, &sprite_shader_, tex_[8]));
-		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-3.0f, 0.0f, 0.0f), sprite_, &sprite_shader_, tex_[8]));
-		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-3.0f, 1.0f, 0.0f), sprite_, &sprite_shader_, tex_[8]));
-		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-3.0f, 2.0f, 0.0f), sprite_, &sprite_shader_, tex_[8]));
+		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-3.0f, -2.0f, 0.0f), sprite_, &sprite_shader_, tex_[8], 0));
+		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-3.0f, -1.0f, 0.0f), sprite_, &sprite_shader_, tex_[8], 0));
+		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-3.0f, 0.0f, 0.0f), sprite_, &sprite_shader_, tex_[8], 0));
+		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-3.0f, 1.0f, 0.0f), sprite_, &sprite_shader_, tex_[8], 0));
+		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-3.0f, 2.0f, 0.0f), sprite_, &sprite_shader_, tex_[8], 0));
 
-		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-4.0f, -4.0f, 0.0f), sprite_, &sprite_shader_, tex_[8]));
-		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-1.0f, -1.0f, 0.0f), sprite_, &sprite_shader_, tex_[8]));
+		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-4.0f, -4.0f, 0.0f), sprite_, &sprite_shader_, tex_[16], 1));
+		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-1.0f, -1.0f, 0.0f), sprite_, &sprite_shader_, tex_[17], 2));
 
 		// Setup background
 		int j = -1;
@@ -256,6 +258,8 @@ namespace game {
 		SetTexture(tex_[13], (resources_directory_g + std::string("/textures/stars1.png")).c_str());
 		SetTexture(tex_[14], (resources_directory_g + std::string("/textures/stars2.png")).c_str());
 		SetTexture(tex_[15], (resources_directory_g + std::string("/textures/stars3.png")).c_str());
+		SetTexture(tex_[16], (resources_directory_g + std::string("/textures/healthCoin.png")).c_str());
+		SetTexture(tex_[17], (resources_directory_g + std::string("/textures/wallCoin.png")).c_str());
 		glBindTexture(GL_TEXTURE_2D, tex_[0]);
 	}
 
@@ -359,7 +363,15 @@ namespace game {
 				float distance = glm::length(collectibleObject->GetPosition() - playerObject->GetPosition());
 
 				if (distance < 0.8f) {
-					playerObject->setNumCollectibles(playerObject->getNumCollectibles() + 1);
+					if (collectibleObject->getType() == 0) {
+						playerObject->setNumCollectibles(playerObject->getNumCollectibles() + 1);
+					}
+					else if (collectibleObject->getType() == 1) {
+						playerObject->setHealth(playerObject->getHealth() + 1);
+					}
+					else if (collectibleObject->getType() == 2) {
+						wallStorage++;
+					}
 					collectibleObject->setHealth(collectibleObject->getHealth() - 1);
 				}
 			}
@@ -683,7 +695,7 @@ namespace game {
 			if (glfwGetMouseButton(window_, GLFW_MOUSE_BUTTON_1) == GLFW_PRESS)
 			{
 				//Begin drawing a wall if there are currently less than the maximum number of walls and another wall is not currently being drawn
-				if (numWalls < MAX_WALLS && !drawingWall)
+				if (numWalls < wallStorage && !drawingWall)
 				{
 					drawingWall = true;
 					

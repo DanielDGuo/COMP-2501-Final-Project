@@ -2,7 +2,7 @@
 #define GAME_H_
 
 #define GLEW_STATIC
-#define NUM_TEXTURES 16
+#define NUM_TEXTURES 18
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <vector>
@@ -147,7 +147,7 @@ namespace game {
 		int numWalls;
 		bool drawingWall;
 		glm::vec3 wallStartPos;
-
+		int wallStorage;
 	}; // class Game
 
 } // namespace game
