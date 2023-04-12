@@ -46,17 +46,9 @@ namespace game {
 			// Set up vectors for the bullet, the object, and its normal
 			double length = sqrt(pow(velocity_.x, 2) + pow(velocity_.y, 2));
 			velocity_ /= length;
-			std::cout << "Bul Vec: (" << velocity_.x << ", " << velocity_.y << ")" << std::endl;
-			std::cout << "Length (vel): " << length << std::endl;
 
 			glm::vec3 objVector = obj->getEndPos() - obj->getStartPos();
-			std::cout << "Obj Vec: (" << objVector.x << ", " << objVector.y << ")" << std::endl;
-
-			glm::vec3 normalVector;
-			normalVector.x = sin(normalAngle);
-			normalVector.y = cos(normalAngle);
-			normalVector.z = 0.0f;
-			std::cout << "Nor Vec: (" << normalVector.x << ", " << normalVector.y << ")" << std::endl;
+			glm::vec3 normalVector(sin(objAngle), cos(objAngle), 0.0f);
 
 			//Calculate the new angle for the bullet
 			float dot = glm::dot(velocity_, normalVector);
@@ -65,6 +57,7 @@ namespace game {
 			//Determine which side of the normal the bullet is on and update the bullet's angle accordingly
 			dot = glm::dot(velocity_, objVector);
 			float direction = 0.0f;
+			std::cout << dot << std::endl;
 			if (dot > 0)
 			{
 				direction = normalAngle + angleDif;
