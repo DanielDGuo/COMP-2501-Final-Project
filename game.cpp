@@ -95,6 +95,9 @@ namespace game {
 		// Initialize sprite shader
 		sprite_shader_.Init((resources_directory_g + std::string("/sprite_vertex_shader.glsl")).c_str(), (resources_directory_g + std::string("/sprite_fragment_shader.glsl")).c_str());
 
+		//init text shader
+		text_shader_.Init((resources_directory_g + std::string("/sprite_vertex_shader.glsl")).c_str(), (resources_directory_g + std::string("/text_fragment_shader.glsl")).c_str());
+
 		// Initialize time
 		current_time_ = 0.0;
 
@@ -159,11 +162,21 @@ namespace game {
 		SetAllTextures();
 
 		// player(s)
-		player_game_objects_.push_back(new PlayerGameObject(glm::vec3(0.0f, 0.0f, 0.0f), sprite_, &sprite_shader_, tex_[0]));
+		PlayerGameObject* player = new PlayerGameObject(glm::vec3(0.0f, 0.0f, 0.0f), sprite_, &sprite_shader_, tex_[0]);
+		player_game_objects_.push_back(player);
 
 		// enemies
 		enemy_game_objects_.push_back(new Stationary(glm::vec3(-1.0f, 1.0f, 0.0f), sprite_, &sprite_shader_, tex_[1], glm::vec3(2.0f, 2.0f, 0.0f)));
 		
+
+		TextGameObject* text = new TextGameObject(glm::vec3(-2.0f, -3.0f, 0.0f), sprite_, &text_shader_, tex_[18], player);
+		text->SetScalex(3);
+		text->SetScaley(1);
+		text->SetText("future hud");
+		
+		background_game_objects_.push_back(text);
+
+
 		//collectibles
 		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-3.0f, -2.0f, 0.0f), sprite_, &sprite_shader_, tex_[8], 0));
 		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-3.0f, -1.0f, 0.0f), sprite_, &sprite_shader_, tex_[8], 0));
@@ -260,6 +273,8 @@ namespace game {
 		SetTexture(tex_[15], (resources_directory_g + std::string("/textures/stars3.png")).c_str());
 		SetTexture(tex_[16], (resources_directory_g + std::string("/textures/healthCoin.png")).c_str());
 		SetTexture(tex_[17], (resources_directory_g + std::string("/textures/wallCoin.png")).c_str());
+		SetTexture(tex_[18], (resources_directory_g + std::string("/textures/font.png")).c_str());
+
 		glBindTexture(GL_TEXTURE_2D, tex_[0]);
 	}
 

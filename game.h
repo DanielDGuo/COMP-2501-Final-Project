@@ -2,7 +2,7 @@
 #define GAME_H_
 
 #define GLEW_STATIC
-#define NUM_TEXTURES 18
+#define NUM_TEXTURES 19
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <vector>
@@ -26,6 +26,7 @@
 #include "bullet_particles.h"
 #include "particles.h"
 #include "particle_system.h"
+#include "text_game_object.h"
 
 #define CAMERA_ZOOM 0.25
 
@@ -77,6 +78,9 @@ namespace game {
 
 		// Shader for rendering explosion particles
 		Shader particle_shader_;
+
+		//shader for text
+		Shader text_shader_;
 
 		// Shader for rendering bullet particles
 		Shader bullet_particle_shader_;

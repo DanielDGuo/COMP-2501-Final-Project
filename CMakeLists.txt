@@ -30,6 +30,8 @@ set(HDRS
     particles.h
     particle_system.h
 	
+    text_game_object.h
+
     player_particles.h
     bullet_particles.h
     cone_particle_system.h
@@ -66,6 +68,9 @@ set(SRCS
     player_particle_vertex_shader.glsl
     player_particle_fragment_shader.glsl
     bullet_particle_fragment_shader.glsl
+
+    text_game_object.cpp
+    text_fragment_shader.glsl
 
     particles.cpp
     particle_system.cpp
