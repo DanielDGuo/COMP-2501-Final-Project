@@ -21,6 +21,7 @@ namespace game {
     protected:
         glm::vec3 startPos;
         glm::vec3 endPos;
+        float timeSinceCreation;
     }; // class TempGameObject
 
 } // namespace game

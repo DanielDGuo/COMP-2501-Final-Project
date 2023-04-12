@@ -455,6 +455,7 @@ namespace game {
 			//deletes objects requesting deletion. skips collision detection
 			if (obstacle->getDelStatus()) {
 				obstacles_.erase(obstacles_.begin() + i);
+				numWalls--;
 			}
 
 			//render the object

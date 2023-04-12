@@ -12,9 +12,15 @@ namespace game {
 		rotAngle = rot;
 		startPos = start;
 		endPos = end;
+		timeSinceCreation = 0.0f;
 	}
 
 	void ObstacleObject::Update(double delta_time) {
-		
+		timeSinceCreation += delta_time;
+
+		if (timeSinceCreation >= 10)
+		{
+			setDelStatus(true);
+		}
 	}
 } // namespace game
