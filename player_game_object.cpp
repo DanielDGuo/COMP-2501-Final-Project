@@ -15,8 +15,9 @@ namespace game {
 		numCollectibles = 0;
 		invincible = false;
 		invincibleStartTime = -99;
-		weapon = 0;
+		weapon = 1;
 		numWeapons = 2;
+		timeSinceSwitch = 0.0f;
 	}
 
 	// Update function for moving the player object around
@@ -39,14 +40,20 @@ namespace game {
 		if (invincibleStartTime + 10 <= (int)glfwGetTime()) {
 			invincible = false;
 		}
+		timeSinceSwitch += delta_time;
 	}
 
 	void PlayerGameObject::SwitchWeapons()
 	{
-		++weapon;
-		if (weapon >= numWeapons || weapon < 0)
+		if (timeSinceSwitch > 0.1)
 		{
-			weapon = 0;
+			timeSinceSwitch = 0.0f;
+			++weapon;
+			if (weapon > numWeapons || weapon < 1)
+			{
+				weapon = 1;
+			}
 		}
+		
 	}
 } // namespace game

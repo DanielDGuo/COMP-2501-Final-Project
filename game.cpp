@@ -204,6 +204,22 @@ namespace game {
 		hud_objects.push_back(wallCount);
 
 
+		text = new TextGameObject(glm::vec3(3.0f, -3.0f, 0.0f), sprite_, &text_shader_, tex_[18], player, 0);
+		text->SetScalex(1.0);
+		text->SetScaley(0.5);
+		text->SetText("Weapon:");
+
+		hud_objects.push_back(text);
+
+		TextGameObject* weapon = new TextGameObject(glm::vec3(3.6f, -3.0f, 0.0f), sprite_, &text_shader_, tex_[18], player, 3);
+		weapon->SetScalex(0.25);
+		weapon->SetScaley(0.5);
+		std::string strWP = std::to_string(player->getWeapon());
+		weapon->SetText(strWP);
+
+
+		hud_objects.push_back(weapon);
+
 		//collectibles
 		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-3.0f, -2.0f, 0.0f), sprite_, &sprite_shader_, tex_[8], 0));
 		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-3.0f, -1.0f, 0.0f), sprite_, &sprite_shader_, tex_[8], 0));
@@ -370,6 +386,10 @@ namespace game {
 			}else if (hud->getType() == 2) {
 				std::string strWL = std::to_string(wallStorage);
 				hud->SetText(strWL);
+			}
+			else if (hud->getType() == 3) {
+				std::string strWP = std::to_string(player->getWeapon());
+				hud->SetText(strWP);
 			}
 
 			//update the object
@@ -847,11 +867,11 @@ namespace game {
 					lastFireTime = glfwGetTime();
 
 					int weapon = player->getWeapon();
-					if (weapon == 0)
+					if (weapon == 1)
 					{
 						ally_bullets_.push_back(new StandardShot(curpos, sprite_, &sprite_shader_, tex_[10], currot + 3.1415 / 2, 5, false));
 					}
-					else if (weapon == 1)
+					else if (weapon == 2)
 					{
 						ally_bullets_.push_back(new TripleShot(curpos, sprite_, &sprite_shader_, tex_[10], currot + 3.1415 / 2, 5, false));
 					}

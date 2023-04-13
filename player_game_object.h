@@ -30,6 +30,8 @@ namespace game {
 		int weapon;
 		//number of weapons
 		int numWeapons;
+		//time since weapon was last switched
+		float timeSinceSwitch;
 	}; // class PlayerGameObject
 
 } // namespace game
