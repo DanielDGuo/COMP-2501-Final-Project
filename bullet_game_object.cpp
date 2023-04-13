@@ -35,7 +35,7 @@ namespace game {
 
 	void BulletGameObject::Ricochet(ObstacleObject* obj)
 	{
-		if (timeSinceLastRicochet > 0.5)
+		if (timeSinceLastRicochet > 0.1)
 		{
 			timeSinceLastRicochet = 0;
 			

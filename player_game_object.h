@@ -13,15 +13,23 @@ namespace game {
 
 		void Update(double delta_time) override;
 
+		//Cycles to the next weapon
+		void SwitchWeapons();
+
 		inline void setNumCollectibles(int i) { numCollectibles = i; }
 		inline int getNumCollectibles() { return numCollectibles; }
 		inline bool getInvincible() { return invincible; };
+		inline int getWeapon() { return weapon; }
 	protected:
 		int invincibleStartTime;
 		//number of collectibles collected by object
 		int numCollectibles;
 		//toggles invincibility
 		bool invincible;
+		//selected weapon
+		int weapon;
+		//number of weapons
+		int numWeapons;
 	}; // class PlayerGameObject
 
 } // namespace game

@@ -845,9 +845,22 @@ namespace game {
 				//fire ally bullet every 1 seconds
 				if (glfwGetTime() > lastFireTime + 1) {
 					lastFireTime = glfwGetTime();
-					ally_bullets_.push_back(new BulletGameObject(curpos, sprite_, &sprite_shader_, tex_[10], currot + 3.1415 / 2, 5, false));
+
+					int weapon = player->getWeapon();
+					if (weapon == 0)
+					{
+						ally_bullets_.push_back(new StandardShot(curpos, sprite_, &sprite_shader_, tex_[10], currot + 3.1415 / 2, 5, false));
+					}
+					else if (weapon == 1)
+					{
+						ally_bullets_.push_back(new TripleShot(curpos, sprite_, &sprite_shader_, tex_[10], currot + 3.1415 / 2, 5, false));
+					}
 				}
 				
+			}
+			if (glfwGetKey(window_, GLFW_KEY_TAB) == GLFW_PRESS)
+			{
+				player->SwitchWeapons();
 			}
 			if (glfwGetMouseButton(window_, GLFW_MOUSE_BUTTON_1) == GLFW_PRESS)
 			{
