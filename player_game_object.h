@@ -17,6 +17,7 @@ namespace game {
 		void SwitchWeapons();
 
 		inline void setNumCollectibles(int i) { numCollectibles = i; }
+		inline void setHealth(int h) { if (invincible && h < health) { return; } health = h; };
 		inline int getNumCollectibles() { return numCollectibles; }
 		inline bool getInvincible() { return invincible; };
 		inline int getWeapon() { return weapon; }
