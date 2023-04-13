@@ -16,12 +16,15 @@ namespace game {
 
 	void Kamakaze::Update(double delta_time) {
 		EnemyGameObject::Update(delta_time);
+
 		glm::mat4 trans = glm::mat4(1.0f);
+		//direction to player
 		glm::vec3 newLoc = glm::normalize(glm::vec3(-(position_.x - playerLoc.x), -(position_.y - playerLoc.y), 0.0f));
 		newLoc *= delta_time * 1.0f;
 		trans = glm::translate(trans, newLoc);
 		position_.x = (trans * glm::vec4(position_, 1.0f)).x;
 		position_.y = (trans * glm::vec4(position_, 1.0f)).y;
+
 	}
 
 	void Kamakaze::fire(std::vector<BulletGameObject*>& enemy_bullets_, Geometry* sprite_, Shader* sprite_shader_, GLuint tex) {

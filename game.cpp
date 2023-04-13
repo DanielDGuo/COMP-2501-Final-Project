@@ -103,7 +103,7 @@ namespace game {
 
 		//Initialize time variables
 		lastFireTime = 0;
-		
+
 		//Initialize wall variables
 		drawingWall = false;
 		numWalls = 0;
@@ -166,14 +166,14 @@ namespace game {
 		player_game_objects_.push_back(player);
 
 		// enemies
-		//enemy_game_objects_.push_back(new Stationary(glm::vec3(-1.0f, 1.0f, 0.0f), sprite_, &sprite_shader_, tex_[1], glm::vec3(2.0f, 2.0f, 0.0f)));
-		
+		enemy_game_objects_.push_back(new Stationary(glm::vec3(-1.0f, 1.0f, 0.0f), sprite_, &sprite_shader_, tex_[1], glm::vec3(2.0f, 2.0f, 0.0f)));
+
 
 		TextGameObject* text = new TextGameObject(glm::vec3(-3.0f, -3.5f, 0.0f), sprite_, &text_shader_, tex_[18], player, 0);
 		text->SetScalex(0.5);
 		text->SetScaley(0.5);
 		text->SetText("HP:");
-		
+
 		hud_objects.push_back(text);
 
 		TextGameObject* hp = new TextGameObject(glm::vec3(-2.6f, -3.5f, 0.0f), sprite_, &text_shader_, tex_[18], player, 1);
@@ -181,7 +181,7 @@ namespace game {
 		hp->SetScaley(0.5);
 		std::string strHP = std::to_string(player->getHealth());
 		hp->SetText(strHP);
-		
+
 
 		hud_objects.push_back(hp);
 
@@ -204,29 +204,13 @@ namespace game {
 		hud_objects.push_back(wallCount);
 
 
-		text = new TextGameObject(glm::vec3(3.0f, -3.0f, 0.0f), sprite_, &text_shader_, tex_[18], player, 0);
-		text->SetScalex(1.0);
-		text->SetScaley(0.5);
-		text->SetText("Weapon:");
-
-		hud_objects.push_back(text);
-
-		TextGameObject* weapon = new TextGameObject(glm::vec3(3.6f, -3.0f, 0.0f), sprite_, &text_shader_, tex_[18], player, 3);
-		weapon->SetScalex(0.25);
-		weapon->SetScaley(0.5);
-		std::string strWP = std::to_string(player->getWeapon());
-		weapon->SetText(strWP);
-
-
-		hud_objects.push_back(weapon);
-
 		//collectibles
 		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-3.0f, -2.0f, 0.0f), sprite_, &sprite_shader_, tex_[8], 0));
 		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-3.0f, -1.0f, 0.0f), sprite_, &sprite_shader_, tex_[8], 0));
 		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-3.0f, 0.0f, 0.0f), sprite_, &sprite_shader_, tex_[8], 0));
 		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-3.0f, 1.0f, 0.0f), sprite_, &sprite_shader_, tex_[8], 0));
 		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-3.0f, 2.0f, 0.0f), sprite_, &sprite_shader_, tex_[8], 0));
-		
+
 		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-4.0f, -4.0f, 0.0f), sprite_, &sprite_shader_, tex_[16], 1));
 		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-1.0f, -1.0f, 0.0f), sprite_, &sprite_shader_, tex_[17], 2));
 
@@ -248,7 +232,7 @@ namespace game {
 			Background* background = new Background(glm::vec3(0.0f, 0.0f, 0.0f), sprite_, &sprite_shader_, tex);
 			background->SetScale(10);
 			if (i % 5 == 0) j++;
-			background->SetPosition(glm::vec3((j * width) - 2*width, ((i % 5) * height) - 2*height, 0.0f));
+			background->SetPosition(glm::vec3((j * width) - 2 * width, ((i % 5) * height) - 2 * height, 0.0f));
 			background_game_objects_.push_back(background);
 
 		}
@@ -336,7 +320,7 @@ namespace game {
 				viewport_background_color_g.b, 0.0);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-			if (!gameOver) {//while not gameOver, access the player position
+			if (!gameOver && player_game_objects_.size() > 0) {//while not gameOver, access the player position
 				playerPos = -player_game_objects_[0]->GetPosition();
 			}
 
@@ -368,7 +352,7 @@ namespace game {
 
 		// Update time
 		current_time_ += delta_time;
-		
+
 		// Handle user input
 		Controls(delta_time);
 		PlayerGameObject* player = player_game_objects_[0];
@@ -378,18 +362,15 @@ namespace game {
 			TextGameObject* hud = static_cast<TextGameObject*>(hud_objects[i]);
 			//GameObject* hud = hud_objects[i];
 			if (hud->getType() == 1) {
-				if (player->getHealth() < 0) {
-					continue;
-				}
 				std::string strHP = std::to_string(player->getHealth());
+				if (player->getHealth() < 0) {
+					strHP = '0';
+				}
 				hud->SetText(strHP);
-			}else if (hud->getType() == 2) {
+			}
+			else if (hud->getType() == 2) {
 				std::string strWL = std::to_string(wallStorage);
 				hud->SetText(strWL);
-			}
-			else if (hud->getType() == 3) {
-				std::string strWP = std::to_string(player->getWeapon());
-				hud->SetText(strWP);
 			}
 
 			//update the object
@@ -417,18 +398,6 @@ namespace game {
 				playerObject->SetTexture(tex_[0]);
 			}
 
-			//handle player death
-			if (playerObject->getTimeOfDeath() != NULL) {
-				glm::vec3 tmpPos = playerObject->GetPosition();
-				player_game_objects_.erase(player_game_objects_.begin());
-
-				//creates a temp object on death
-				TempGameObject* tmp = new TempGameObject(tmpPos, sprite_, &sprite_shader_, tex_[7], 3);
-				tmp->setPlayerExplosion(true);
-
-				temp_game_objects_.push_back(tmp);
-				gameOver = true;
-			}
 
 			// Check for collision between player with enemy objects
 			for (int j = 0; j < enemy_game_objects_.size(); j++) {
@@ -463,6 +432,19 @@ namespace game {
 				}
 			}
 
+			//handle player death
+			if (playerObject->getTimeOfDeath() != NULL && gameOver == false) {
+				glm::vec3 tmpPos = playerObject->GetPosition();
+				playerObject->SetVelocity(glm::vec3(0, 0, 0));
+
+				//creates a temp object on death
+				TempGameObject* tmp = new TempGameObject(tmpPos, sprite_, &sprite_shader_, tex_[7], 3);
+				tmp->setPlayerExplosion(true);
+
+				temp_game_objects_.push_back(tmp);
+				gameOver = true;
+			}
+
 			//render the object
 			playerObject->Render(view_matrix, current_time_);
 		}
@@ -483,9 +465,9 @@ namespace game {
 				//temp_game_objects_.push_back(new TempGameObject(tmpPos, sprite_, &sprite_shader_, tex_[7], 3));
 			}
 
-			if (!gameOver) {
+			if (!gameOver && player_game_objects_.size() > 0) {
 				PlayerGameObject* playerObject = player_game_objects_[0];
-				enemyObject->setPlayerLoc(playerObject->GetPosition());		
+				enemyObject->setPlayerLoc(playerObject->GetPosition());
 				enemyObject->fire(enemy_bullets_, sprite_, &sprite_shader_, tex_[10]);
 			}
 
@@ -575,7 +557,7 @@ namespace game {
 				//vector from bullet to next position
 				glm::vec3 ray = nextpos - curpos;
 				float raylength = sqrt(pow(ray.x, 2) + pow(ray.y, 2));
-				
+
 				//Get the start and end positions of the wall
 				glm::vec3 obsStart = obstacle->getStartPos();
 				glm::vec3 obsEnd = obstacle->getEndPos();
@@ -841,17 +823,17 @@ namespace game {
 			// Adjust motion increment based on a given speed
 			float speed = 2.5;
 			float rotSpeed = 5;
-			float motion_increment = speed * delta_time;
+			float player_accel = speed * delta_time;
 			float rotation_increment = rotSpeed * delta_time;
 
 			// Check for player input and make changes accordingly
 			if (glfwGetKey(window_, GLFW_KEY_W) == GLFW_PRESS) {
 				//increases speed in direction pointed
-				player->SetVelocity(curvel + motion_increment * dir);
+				player->SetVelocity(curvel + player_accel * dir);
 			}
 			if (glfwGetKey(window_, GLFW_KEY_S) == GLFW_PRESS && glm::length(curvel) > 0) {
 				//decreases speed in direction going(up to 0)
-				player->SetVelocity(curvel - motion_increment * glm::normalize(curvel));
+				player->SetVelocity(curvel - player_accel * glm::normalize(curvel));
 			}
 			if (glfwGetKey(window_, GLFW_KEY_D) == GLFW_PRESS) {
 				//rotate right
@@ -860,27 +842,14 @@ namespace game {
 			if (glfwGetKey(window_, GLFW_KEY_A) == GLFW_PRESS) {
 				//rotate left
 				player->setRotation(currot + rotation_increment);
-			} 
+			}
 			if (glfwGetKey(window_, GLFW_KEY_SPACE) == GLFW_PRESS) {
 				//fire ally bullet every 1 seconds
 				if (glfwGetTime() > lastFireTime + 1) {
 					lastFireTime = glfwGetTime();
-
-					int weapon = player->getWeapon();
-					if (weapon == 1)
-					{
-						ally_bullets_.push_back(new StandardShot(curpos, sprite_, &sprite_shader_, tex_[10], currot + 3.1415 / 2, 5, false));
-					}
-					else if (weapon == 2)
-					{
-						ally_bullets_.push_back(new TripleShot(curpos, sprite_, &sprite_shader_, tex_[10], currot + 3.1415 / 2, 5, false));
-					}
+					ally_bullets_.push_back(new BulletGameObject(curpos, sprite_, &sprite_shader_, tex_[10], currot + 3.1415 / 2, 5, false));
 				}
-				
-			}
-			if (glfwGetKey(window_, GLFW_KEY_TAB) == GLFW_PRESS)
-			{
-				player->SwitchWeapons();
+
 			}
 			if (glfwGetMouseButton(window_, GLFW_MOUSE_BUTTON_1) == GLFW_PRESS)
 			{
@@ -888,7 +857,7 @@ namespace game {
 				if (wallStorage != 0 && !drawingWall)
 				{
 					drawingWall = true;
-					
+
 					//Record the position of the mouse at the beginning of the drawing
 					double* x = new double();
 					double* y = new double();
@@ -919,23 +888,23 @@ namespace game {
 					//Check the length of the wall
 					glm::vec3 wallVector = wallEndPos - wallStartPos;
 					double length = sqrt(pow(wallVector.x, 2) + pow(wallVector.y, 2));
-					
+
 					if (length >= MIN_WALL_LENGTH && length <= MAX_WALL_LENGTH)
-					{						
+					{
 						//Calculate the position of the wall
 						wallVector *= 0.5;
 						glm::vec3 wallPos = wallStartPos + wallVector;
 
 						//Calculate the angle of the wall
 						float wallAngle = 0;
-						
+
 						if (wallVector.x != 0)
 						{
-							wallAngle = atan(wallVector.y/wallVector.x);
+							wallAngle = atan(wallVector.y / wallVector.x);
 						}
 						else
 						{
-							
+
 						}
 
 						//Create the wall
@@ -969,7 +938,7 @@ namespace game {
 
 		//Translate by the player's position
 		pos += playerPos;
-		
+
 	}
 
 } // namespace game

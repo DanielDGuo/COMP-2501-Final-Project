@@ -15,8 +15,6 @@
 #include "player_game_object.h"
 #include "temp_game_object.h"
 #include "bullet_game_object.h"
-#include "standard_shot.h"
-#include "triple_shot.h"
 #include "obstacle_game_object.h"
 #include "flavour_game_object.h"
 #include "cone_particle_system.h"

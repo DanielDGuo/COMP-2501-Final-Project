@@ -50,7 +50,6 @@ namespace game {
 			//instead of requestion deletion, set deceased in the frag shader to true to greyscale, and log the time of death
 			shader_->SetUniform1i("deceased", 1);
 			if(timeOfDeath == NULL){
-				
 				timeOfDeath = glfwGetTime();
 			}
 		}

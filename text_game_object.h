@@ -17,7 +17,7 @@ namespace game {
         std::string GetText(void) const;
         void SetText(std::string text);
 
-        inline int getType() { return type; }
+        int getType() { return type; }
 
         // Render function for the text
         void Render(glm::mat4 view_matrix, double current_time) override;
