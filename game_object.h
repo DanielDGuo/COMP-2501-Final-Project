@@ -48,7 +48,7 @@ namespace game {
             inline void SetScaley(float s) { scaley = s; }
             inline void SetVelocity(const glm::vec3& velocity) { velocity_ = velocity; }
             inline void SetTexture(const GLuint texture) { texture_ = texture; }
-            inline void setHealth(int h) { health = h; };
+            inline virtual void setHealth(int h) { health = h; };
             inline void setRotation(float r) { rotAngle = r; };
             inline void setDelStatus(bool d) { delObj = d; };
             void setLife(float l) { lifespan = l; }

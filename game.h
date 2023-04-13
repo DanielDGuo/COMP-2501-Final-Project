@@ -24,6 +24,8 @@
 #include "kamakaze_enemy.h"
 #include "moving_enemy.h"
 #include "stationary_enemy.h"
+#include "boss_middle.h"
+#include "boss_edge.h"
 #include "player_particles.h"
 #include "bullet_particles.h"
 #include "particles.h"

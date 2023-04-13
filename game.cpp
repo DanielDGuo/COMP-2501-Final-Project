@@ -166,7 +166,10 @@ namespace game {
 		player_game_objects_.push_back(player);
 
 		// enemies
-		enemy_game_objects_.push_back(new Stationary(glm::vec3(-1.0f, 1.0f, 0.0f), sprite_, &sprite_shader_, tex_[1], glm::vec3(2.0f, 2.0f, 0.0f)));
+		BossMiddle* bossBody = new BossMiddle(glm::vec3(0.0f, 2.0f, 0.0f), sprite_, &sprite_shader_, tex_[5], player);
+		enemy_game_objects_.push_back(bossBody);
+		enemy_game_objects_.push_back(new BossEdge(glm::vec3(0.0f, 1.0f, 0.0f), sprite_, &sprite_shader_, tex_[6], bossBody, false));
+		enemy_game_objects_.push_back(new BossEdge(glm::vec3(0.0f, 1.0f, 0.0f), sprite_, &sprite_shader_, tex_[6], bossBody, true));
 
 
 		TextGameObject* text = new TextGameObject(glm::vec3(-3.0f, -3.5f, 0.0f), sprite_, &text_shader_, tex_[18], player, 0);
@@ -204,8 +207,8 @@ namespace game {
 		hud_objects.push_back(wallCount);
 
 
-		text = new TextGameObject(glm::vec3(2.9f, -3.0f, 0.0f), sprite_, &text_shader_, tex_[18], player, 0);
-		text->SetScalex(1.25);
+		text = new TextGameObject(glm::vec3(3.0f, -3.0f, 0.0f), sprite_, &text_shader_, tex_[18], player, 0);
+		text->SetScalex(1.0);
 		text->SetScaley(0.5);
 		text->SetText("Weapon:");
 
@@ -392,14 +395,6 @@ namespace game {
 				std::string strWP = std::to_string(player->getWeapon());
 				hud->SetText(strWP);
 			}
-			else if (hud->getType() == 4) {
-				std::string strWP = std::to_string(player->getInvinStart()+10-(int)glfwGetTime());
-				hud->SetText(strWP);
-				if (strWP == "0") {
-					hud_objects.erase(hud_objects.begin() + i-1);
-					hud_objects.erase(hud_objects.begin() + i-1);
-				}
-			}
 
 			//update the object
 			hud->Update(delta_time);
@@ -449,21 +444,6 @@ namespace game {
 				if (distance < 0.8f) {
 					if (collectibleObject->getType() == 0) {
 						playerObject->setNumCollectibles(playerObject->getNumCollectibles() + 1);
-						if (playerObject->getNumCollectibles() == 5) {
-							TextGameObject* text = new TextGameObject(glm::vec3(0.0f, -2.8f, 0.0f), sprite_, &text_shader_, tex_[18], player, 0);
-							text->SetScalex(1.25);
-							text->SetScaley(0.5);
-							text->SetText("Invicible");
-							hud_objects.push_back(text);
-
-							TextGameObject* Timer = new TextGameObject(glm::vec3(0.0f, -3.3f, 0.0f), sprite_, &text_shader_, tex_[18], player, 4);
-							Timer->SetScalex(0.25);
-							Timer->SetScaley(0.5);
-	
-							Timer->SetText("10");
-							hud_objects.push_back(Timer);
-
-						}
 					}
 					else if (collectibleObject->getType() == 1) {
 						playerObject->setHealth(playerObject->getHealth() + 1);
