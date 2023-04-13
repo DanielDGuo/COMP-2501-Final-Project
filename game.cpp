@@ -169,12 +169,39 @@ namespace game {
 		//enemy_game_objects_.push_back(new Stationary(glm::vec3(-1.0f, 1.0f, 0.0f), sprite_, &sprite_shader_, tex_[1], glm::vec3(2.0f, 2.0f, 0.0f)));
 		
 
-		TextGameObject* text = new TextGameObject(glm::vec3(-2.0f, -3.0f, 0.0f), sprite_, &text_shader_, tex_[18], player);
-		text->SetScalex(3);
-		text->SetScaley(1);
-		text->SetText("future hud");
+		TextGameObject* text = new TextGameObject(glm::vec3(-3.0f, -3.5f, 0.0f), sprite_, &text_shader_, tex_[18], player, 0);
+		text->SetScalex(0.5);
+		text->SetScaley(0.5);
+		text->SetText("HP:");
 		
-		background_game_objects_.push_back(text);
+		hud_objects.push_back(text);
+
+		TextGameObject* hp = new TextGameObject(glm::vec3(-2.6f, -3.5f, 0.0f), sprite_, &text_shader_, tex_[18], player, 1);
+		hp->SetScalex(0.25);
+		hp->SetScaley(0.5);
+		std::string strHP = std::to_string(player->getHealth());
+		hp->SetText(strHP);
+		
+
+		hud_objects.push_back(hp);
+
+
+
+		text = new TextGameObject(glm::vec3(3.0f, -3.5f, 0.0f), sprite_, &text_shader_, tex_[18], player, 0);
+		text->SetScalex(1.0);
+		text->SetScaley(0.5);
+		text->SetText("Walls:");
+
+		hud_objects.push_back(text);
+
+		TextGameObject* wallCount = new TextGameObject(glm::vec3(3.6f, -3.5f, 0.0f), sprite_, &text_shader_, tex_[18], player, 2);
+		wallCount->SetScalex(0.25);
+		wallCount->SetScaley(0.5);
+		std::string strWL = std::to_string(wallStorage);
+		wallCount->SetText(strWL);
+
+
+		hud_objects.push_back(wallCount);
 
 
 		//collectibles
@@ -183,7 +210,7 @@ namespace game {
 		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-3.0f, 0.0f, 0.0f), sprite_, &sprite_shader_, tex_[8], 0));
 		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-3.0f, 1.0f, 0.0f), sprite_, &sprite_shader_, tex_[8], 0));
 		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-3.0f, 2.0f, 0.0f), sprite_, &sprite_shader_, tex_[8], 0));
-
+		
 		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-4.0f, -4.0f, 0.0f), sprite_, &sprite_shader_, tex_[16], 1));
 		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-1.0f, -1.0f, 0.0f), sprite_, &sprite_shader_, tex_[17], 2));
 
@@ -325,9 +352,34 @@ namespace game {
 
 		// Update time
 		current_time_ += delta_time;
-
+		
 		// Handle user input
 		Controls(delta_time);
+		PlayerGameObject* player = player_game_objects_[0];
+
+		for (int i = 0; i < hud_objects.size(); i++) {
+
+			TextGameObject* hud = static_cast<TextGameObject*>(hud_objects[i]);
+			//GameObject* hud = hud_objects[i];
+			if (hud->getType() == 1) {
+				if (player->getHealth() < 0) {
+					continue;
+				}
+				std::string strHP = std::to_string(player->getHealth());
+				hud->SetText(strHP);
+			}else if (hud->getType() == 2) {
+				std::string strWL = std::to_string(wallStorage);
+				hud->SetText(strWL);
+			}
+
+			//update the object
+			hud->Update(delta_time);
+
+
+
+			//render the object
+			hud->Render(view_matrix, current_time_);
+		}
 
 		//update and render all player game objects
 		for (int i = 0; i < player_game_objects_.size(); i++) {
@@ -471,6 +523,7 @@ namespace game {
 			if (obstacle->getDelStatus()) {
 				obstacles_.erase(obstacles_.begin() + i);
 				numWalls--;
+				wallStorage++;
 			}
 
 			//render the object
@@ -794,11 +847,12 @@ namespace game {
 					lastFireTime = glfwGetTime();
 					ally_bullets_.push_back(new BulletGameObject(curpos, sprite_, &sprite_shader_, tex_[10], currot + 3.1415 / 2, 5, false));
 				}
+				
 			}
 			if (glfwGetMouseButton(window_, GLFW_MOUSE_BUTTON_1) == GLFW_PRESS)
 			{
 				//Begin drawing a wall if there are currently less than the maximum number of walls and another wall is not currently being drawn
-				if (numWalls < wallStorage && !drawingWall)
+				if (wallStorage != 0 && !drawingWall)
 				{
 					drawingWall = true;
 					
@@ -854,6 +908,7 @@ namespace game {
 						//Create the wall
 						obstacles_.push_back(new ObstacleObject(wallPos, sprite_, &sprite_shader_, tex_[12], wallStartPos, wallEndPos, length, wallAngle));
 						++numWalls;
+						--wallStorage;
 					}
 				}
 			}

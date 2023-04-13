@@ -118,6 +118,9 @@ namespace game {
 		// List of bullet effects
 		std::vector<ConeParticleSystem*> bullet_effects_;
 
+		// List of hud objects
+		std::vector<GameObject*> hud_objects;
+
 		FlavourGameObject* blade;
 
 		//keeps track of number of game state

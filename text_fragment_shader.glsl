@@ -51,11 +51,14 @@ void main()
         fuv.y = (cuv.y + row)*char_height;
         // Draw character
         vec4 color = texture2D(onetex, fuv);
-        //gl_FragColor = vec4(color.r, color.g, color.b, color.a);
-        gl_FragColor = vec4(color.r, 0.0, 0.0, 1.0);
+        gl_FragColor = vec4(color.r, color.g, color.b, color.a);
+        //gl_FragColor = vec4(color.r, 0.0, 0.0, 1.0);
+        if(color.r < 0.3 && color.g < 0.3 && color.b < 0.3){
+            discard;
+        }
 
-        // Check for transparency
-        /*if(color.a < 1.0)
+        /*// Check for transparency
+        if(color.a < 1.0)
         {
              discard;
         }*/

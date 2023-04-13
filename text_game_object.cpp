@@ -4,9 +4,10 @@
 
 namespace game {
 
-    TextGameObject::TextGameObject(const glm::vec3& position, Geometry* geom, Shader* shader, GLuint texture, GameObject* p) : GameObject(position, geom, shader, texture) {
+    TextGameObject::TextGameObject(const glm::vec3& position, Geometry* geom, Shader* shader, GLuint texture, GameObject* p, int t) : GameObject(position, geom, shader, texture) {
         parent_ = p;
         text_ = "";
+        type = t;
     }
 
 
@@ -77,5 +78,7 @@ namespace game {
 
         text_ = text;
     }
+
+
 
 } // namespace game

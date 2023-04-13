@@ -11,11 +11,13 @@ namespace game {
     class TextGameObject : public GameObject {
 
     public:
-        TextGameObject(const glm::vec3& position, Geometry* geom, Shader* shader, GLuint texture, GameObject* p);
+        TextGameObject(const glm::vec3& position, Geometry* geom, Shader* shader, GLuint texture, GameObject* p, int t);
 
         // Text to be displayed
         std::string GetText(void) const;
         void SetText(std::string text);
+
+        int getType() { return type; }
 
         // Render function for the text
         void Render(glm::mat4 view_matrix, double current_time) override;
@@ -23,6 +25,10 @@ namespace game {
     private:
         std::string text_;
         GameObject* parent_;
+        int type;
+        //0 is permanent text
+        //1 is hp counter
+        //2 is wall counter
 
     }; // class TextGameObject
 
