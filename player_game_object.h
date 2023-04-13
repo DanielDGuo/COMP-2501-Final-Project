@@ -20,7 +20,6 @@ namespace game {
 		inline void setHealth(int h) { if (invincible && h < health) { return; } health = h; };
 		inline int getNumCollectibles() { return numCollectibles; }
 		inline bool getInvincible() { return invincible; };
-		inline int getInvinStart() { return invincibleStartTime; }
 		inline int getWeapon() { return weapon; }
 	protected:
 		int invincibleStartTime;

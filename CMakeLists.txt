@@ -15,6 +15,8 @@ set(HDRS
     stationary_enemy.h
     moving_enemy.h
     kamakaze_enemy.h
+    boss_middle.h
+    boss_edge.h
 	
     temp_game_object.h
     collectible_game_object.h
@@ -43,10 +45,14 @@ set(SRCS
     game_object.cpp
     main.cpp
     player_game_object.cpp
+	
     enemy_game_object.cpp
     stationary_enemy.cpp
     moving_enemy.cpp
     kamakaze_enemy.cpp
+    boss_middle.cpp
+    boss_edge.cpp
+	
     temp_game_object.cpp
     collectible_game_object.cpp
     background_game_object.cpp
