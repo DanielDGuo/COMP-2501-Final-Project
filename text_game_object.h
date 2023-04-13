@@ -29,7 +29,8 @@ namespace game {
         //0 is permanent text
         //1 is hp counter
         //2 is wall counter
-
+        //
+        //4 is invin timer
     }; // class TextGameObject
 
 } // namespace game
