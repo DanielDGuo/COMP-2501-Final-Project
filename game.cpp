@@ -549,7 +549,7 @@ namespace game {
 						}	
 					}
 					else if (collectibleObject->getType() == 1) {
-						playerObject->setHealth(playerObject->getHealth() + 1);
+						playerObject->setHealth(playerObject->getHealth() + 5);
 					}
 					else if (collectibleObject->getType() == 2) {
 						wallStorage++;
@@ -585,7 +585,19 @@ namespace game {
 			//deletes objects requesting deletion. skips collision detection
 			if (enemyObject->getDelStatus()) {
 				//now greyscales instead of creating a boom
-
+				int chance = rand() % 10 + 1;
+				glm::vec3 enemyPos = enemyObject->GetPosition();
+			
+				if (chance < 5) {
+					
+					collectible_game_objects_.push_back(new CollectibleObject(enemyPos, sprite_, &sprite_shader_, tex_[16], 1));
+				}
+				else if (chance == 5) {
+					collectible_game_objects_.push_back(new CollectibleObject(enemyPos, sprite_, &sprite_shader_, tex_[17], 2));
+				}
+				else if (chance > 5 && chance < 9) {
+					collectible_game_objects_.push_back(new CollectibleObject(enemyPos, sprite_, &sprite_shader_, tex_[8], 0));
+				}
 				//glm::vec3 tmpPos = enemyObject->GetPosition();
 				enemy_game_objects_.erase(enemy_game_objects_.begin() + i);
 				//temp_game_objects_.push_back(new TempGameObject(tmpPos, sprite_, &sprite_shader_, tex_[7], 3));
