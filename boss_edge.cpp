@@ -18,6 +18,7 @@ namespace game {
 		playerLoc = glm::vec3(0.0f, 0.0f, 0.0f);
 		arrived = false;
 		leftWing = isLeft;
+		score = 10;
 	}
 
 	void BossEdge::Update(double delta_time) {

@@ -12,11 +12,12 @@ namespace game {
 
 	Kamakaze::Kamakaze(const glm::vec3& position, Geometry* geom, Shader* shader, GLuint texture)
 		: EnemyGameObject(position, geom, shader, texture, 1) {
+		score = 1;
 	}
 
 	void Kamakaze::Update(double delta_time) {
 		EnemyGameObject::Update(delta_time);
-
+		if (health <= 0) { return; }
 		glm::mat4 trans = glm::mat4(1.0f);
 		//direction to player
 		glm::vec3 newLoc = glm::normalize(glm::vec3(-(position_.x - playerLoc.x), -(position_.y - playerLoc.y), 0.0f));

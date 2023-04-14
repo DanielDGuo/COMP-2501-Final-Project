@@ -13,10 +13,12 @@ namespace game {
 	Stationary::Stationary(const glm::vec3& position, Geometry* geom, Shader* shader, GLuint texture, glm::vec3& targetLoc)
 		: EnemyGameObject(position, geom, shader, texture, 15) {
 		this->targetLoc = targetLoc;
+		score = 3;
 	}
 
 	void Stationary::Update(double delta_time) {
 		EnemyGameObject::Update(delta_time);
+		if (health <= 0) { return; }
 		if (glm::distance(position_, targetLoc) > 0.2f) {
 			glm::mat4 trans = glm::mat4(1.0f);
 			glm::vec3 newLoc = glm::normalize(glm::vec3(-(position_.x - targetLoc.x), -(position_.y - targetLoc.y), 0.0f));

@@ -15,10 +15,13 @@ namespace game {
 		this->targetLoc = targetLoc;
 		playerLoc = glm::vec3(0.0f, 0.0f, 0.0f);
 		arrived = false;
+		score = 5;
 	}
 
 	void Moving::Update(double delta_time) {
 		EnemyGameObject::Update(delta_time);
+
+		if (health <= 0) { return; }
 
 		//move towards targetLoc
 		if (glm::distance(position_, targetLoc) > 1.0f && arrived == false) {

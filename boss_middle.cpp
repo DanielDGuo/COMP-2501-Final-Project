@@ -19,6 +19,7 @@ namespace game {
 		*/
 		playerLoc = glm::vec3(0.0f, 0.0f, 0.0f);
 		arrived = false;
+		score = 30;
 	}
 
 	void BossMiddle::Update(double delta_time) {

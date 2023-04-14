@@ -39,6 +39,11 @@ namespace game {
 		}
 
 		wallStorage = MAX_WALLS;
+		
+		curScore = 0;	
+		finalScore = 25;
+		summonedBoss = false;
+		lastSpawned = 0;
 
 		srand(time(NULL));
 		// Set window to not resizable
@@ -165,11 +170,6 @@ namespace game {
 		PlayerGameObject* player = new PlayerGameObject(glm::vec3(0.0f, 0.0f, 0.0f), sprite_, &sprite_shader_, tex_[0]);
 		player_game_objects_.push_back(player);
 
-		// enemies
-		BossMiddle* bossBody = new BossMiddle(glm::vec3(0.0f, 2.0f, 0.0f), sprite_, &sprite_shader_, tex_[5], player);
-		enemy_game_objects_.push_back(bossBody);
-		enemy_game_objects_.push_back(new BossEdge(glm::vec3(0.0f, 1.0f, 0.0f), sprite_, &sprite_shader_, tex_[6], bossBody, false));
-		enemy_game_objects_.push_back(new BossEdge(glm::vec3(0.0f, 1.0f, 0.0f), sprite_, &sprite_shader_, tex_[6], bossBody, true));
 
 
 		TextGameObject* text = new TextGameObject(glm::vec3(-3.0f, -3.5f, 0.0f), sprite_, &text_shader_, tex_[18], player, 0);
@@ -327,6 +327,7 @@ namespace game {
 
 	void Game::MainLoop(void)
 	{
+
 		glm::vec3 playerPos;
 
 		// Loop while the user did not close the window
@@ -371,6 +372,68 @@ namespace game {
 
 		// Update time
 		current_time_ += delta_time;
+
+		//spawn enemies until the threshold is passed
+		if (curScore < finalScore && !gameOver && player_game_objects_.size() > 0 && (lastSpawned + 10 + (rand() % 5)) < glfwGetTime()) {
+			lastSpawned = glfwGetTime();
+			GameObject* player = player_game_objects_[0];
+			glm::vec3 playerPos = player->GetPosition();
+			glm::vec3 spawnLocation = playerPos;
+
+			//spawn 4 units above the player
+			spawnLocation.y += 4;
+
+			//spawn up to 4 enemies
+			int enemyNumber = rand() % 4 + 1;
+
+			for (int i = 0; i < enemyNumber; i++) {
+				int enemyType = rand() % 3;
+				if (enemyType == 0) {//spawn kamakaze
+					enemy_game_objects_.push_back(new Kamakaze(spawnLocation, sprite_, &sprite_shader_, tex_[6]));
+				}
+				if (enemyType == 1) {//spawn moving
+					glm::vec3 targetLoc;
+					//thanks to https://stackoverflow.com/questions/686353/random-float-number-generation for the random float
+					//targets a position +-3 units from the player
+					float LO = -3.0;
+					float HI = 3.0;
+					targetLoc.x = playerPos.x + LO + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (HI - LO)));
+					targetLoc.y = playerPos.y + LO + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (HI - LO)));
+					targetLoc.z = 0;
+					enemy_game_objects_.push_back(new Moving(spawnLocation, sprite_, &sprite_shader_, tex_[6], targetLoc));
+				}
+				if (enemyType == 2) {//spawn stationary
+					glm::vec3 targetLoc;
+					//thanks to https://stackoverflow.com/questions/686353/random-float-number-generation for the random float
+					//targets a position +-3 units from the player
+					float LO = -3.0;
+					float HI = 3.0;
+					targetLoc.x = playerPos.x + LO + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (HI - LO)));
+					targetLoc.y = playerPos.y + LO + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (HI - LO)));
+					targetLoc.z = 0;
+					enemy_game_objects_.push_back(new Stationary(spawnLocation, sprite_, &sprite_shader_, tex_[6], targetLoc));
+				}
+			}
+		}
+
+		//summon the boss when the threshold is passed
+		if (curScore > finalScore && !gameOver && player_game_objects_.size() > 0 && !summonedBoss && (lastSpawned + 10 + (rand() % 5)) < glfwGetTime()) {
+			summonedBoss = true;
+			GameObject* player = player_game_objects_[0];
+			
+			//boss code
+			BossMiddle* bossBody = new BossMiddle(glm::vec3(0.0f, 2.0f, 0.0f), sprite_, &sprite_shader_, tex_[5], player);
+			enemy_game_objects_.push_back(bossBody);
+			enemy_game_objects_.push_back(new BossEdge(glm::vec3(0.0f, 1.0f, 0.0f), sprite_, &sprite_shader_, tex_[6], bossBody, false));
+			enemy_game_objects_.push_back(new BossEdge(glm::vec3(0.0f, 1.0f, 0.0f), sprite_, &sprite_shader_, tex_[6], bossBody, true));
+		}
+
+		//if there are no enemies and the boss was summoned, close the game
+		if (enemy_game_objects_.size() <= 0 && summonedBoss) {
+			std::cout << "YOU WIN" << std::endl;
+			exit(0);
+		}
+
 
 		// Handle user input
 		Controls(delta_time);
@@ -438,9 +501,10 @@ namespace game {
 				//if distance is below a threshold, update the health
 				if (distance < 0.8f && enemyObject->getHealth() > 0) {
 					if (!playerObject->getInvincible()) {
-						playerObject->setHealth(playerObject->getHealth() - 100);
+						playerObject->setHealth(playerObject->getHealth() - 5);
 					}
 					enemyObject->setHealth(enemyObject->getHealth() - 100);
+					curScore += enemyObject->getScore();
 				}
 			}
 
@@ -662,6 +726,7 @@ namespace game {
 							particles->SetScale(0.2);
 							particles->setLife(2);
 							particles->setSpawntime(current_time_);
+							curScore += enemyObject->getScore();
 
 							background_game_objects_.push_back(particles);
 						}
@@ -891,7 +956,7 @@ namespace game {
 			}
 			if (glfwGetKey(window_, GLFW_KEY_SPACE) == GLFW_PRESS) {
 				//fire ally bullet every 1 seconds
-				if (glfwGetTime() > lastFireTime + 1) {
+				if (glfwGetTime() > lastFireTime + 0.1) {
 					lastFireTime = glfwGetTime();
 
 					int weapon = player->getWeapon();

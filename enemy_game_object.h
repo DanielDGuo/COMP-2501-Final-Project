@@ -19,6 +19,7 @@ namespace game {
 
 		virtual void fire(std::vector<BulletGameObject*>& enemy_bullets_, Geometry* sprite_, Shader* sprite_shader_, GLuint tex);
 
+		virtual inline int getScore() { return score; };
 	protected:
 		// location of player for some derived classes
 		glm::vec3 playerLoc;
@@ -26,6 +27,8 @@ namespace game {
 		float lastFireTime;
 		//if it has arrived at position or not
 		bool arrived;
+		//amount of points enemy is worth
+		int score;
 
 	}; // class EnemyGameObject
 

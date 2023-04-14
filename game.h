@@ -97,6 +97,8 @@ namespace game {
 
 		// List of enemy game objects
 		std::vector<EnemyGameObject*> enemy_game_objects_;
+		bool summonedBoss;
+		float lastSpawned;
 
 		// List of player game objects
 		std::vector<PlayerGameObject*> player_game_objects_;
@@ -159,6 +161,10 @@ namespace game {
 		bool drawingWall;
 		glm::vec3 wallStartPos;
 		int wallStorage;
+
+		//score variables
+		int curScore;
+		int finalScore;
 	}; // class Game
 
 } // namespace game

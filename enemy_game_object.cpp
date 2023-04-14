@@ -20,7 +20,7 @@ namespace game {
 	void EnemyGameObject::Update(double delta_time) {
 		GameObject::Update(delta_time);
 
-		if (timeOfDeath != NULL) {
+		if (timeOfDeath != NULL || health <= 0) {
 			// Enemy has died. End the update.
 			return;
 		}
