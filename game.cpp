@@ -223,6 +223,15 @@ namespace game {
 
 		hud_objects.push_back(weapon);
 
+		TextGameObject* score = new TextGameObject(glm::vec3(-3.5f, 3.5f, 0.0f), sprite_, &text_shader_, tex_[18], player, 5);
+		score->SetScalex(0.25);
+		score->SetScaley(0.5);
+		std::string strSC = std::to_string(curScore);
+		score->SetText(strSC);
+
+
+		hud_objects.push_back(score);
+
 		//collectibles
 		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-3.0f, -2.0f, 0.0f), sprite_, &sprite_shader_, tex_[8], 0));
 		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-3.0f, -1.0f, 0.0f), sprite_, &sprite_shader_, tex_[8], 0));
@@ -467,6 +476,11 @@ namespace game {
 					hud_objects.erase(hud_objects.begin() + i - 1);
 					hud_objects.erase(hud_objects.begin() + i - 1);
 				}
+			}
+			else if (hud->getType() == 5)
+			{
+				std::string strSC = std::to_string(curScore);
+				hud->SetText(strSC);
 			}
 
 			//update the object
