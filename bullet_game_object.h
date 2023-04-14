@@ -30,9 +30,10 @@ namespace game {
 		bool enemyBullet;
 		//timestamp of creation
 		float spawnTime;
-		//determines if the bullet is in ricochet mode
-		bool ricocheted;
+		//Keeps track of time since the last ricochet
 		float timeSinceLastRicochet;
+		//Tracks whether the bullet has been activated
+		bool activated;
 
 	}; // class BulletGameObject
 

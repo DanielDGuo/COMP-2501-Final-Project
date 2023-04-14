@@ -10,7 +10,7 @@ namespace game {
 	class TripleShot : public BulletGameObject {
 
 	public:
-		TripleShot(const glm::vec3& position, Geometry* geom, Shader* shader, GLuint texture, float direction, int dam, bool enemy);
+		TripleShot(const glm::vec3& position, Geometry* geom, Shader* shader, GLuint texture, float direction, int dam, bool enemy, bool activated);
 
 		//Activates the unique effect of the given bullet
 		void Activate(std::vector<BulletGameObject*>* bullets) override;

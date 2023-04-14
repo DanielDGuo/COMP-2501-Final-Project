@@ -970,7 +970,7 @@ namespace game {
 					}
 					else if (weapon == 2)
 					{
-						ally_bullets_.push_back(new TripleShot(curpos, sprite_, &sprite_shader_, tex_[20], currot + 3.1415 / 2, 5, false));
+						ally_bullets_.push_back(new TripleShot(curpos, sprite_, &sprite_shader_, tex_[20], currot + 3.1415 / 2, 5, false, false));
 					}
 				}
 

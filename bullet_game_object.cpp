@@ -21,6 +21,7 @@ namespace game {
 		scalex = 0.5;
 		scaley = 0.5;
 		timeSinceLastRicochet = 1.0;
+		activated = false;
 	}
 
 	void BulletGameObject::Update(double delta_time) {
