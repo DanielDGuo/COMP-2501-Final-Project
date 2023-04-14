@@ -13,7 +13,7 @@ namespace game {
 		StandardShot(const glm::vec3& position, Geometry* geom, Shader* shader, GLuint texture, float direction, int dam, bool enemy);
 
 		//Activates the unique effect of the given bullet
-		void Activate() override;
+		void Activate(std::vector<BulletGameObject*>* bullets) override;
 
     }; // class StandardShot
 

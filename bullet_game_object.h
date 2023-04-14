@@ -3,6 +3,7 @@
 
 #include "game_object.h"
 #include "obstacle_game_object.h"
+#include <vector>
 
 namespace game {
 
@@ -18,7 +19,7 @@ namespace game {
 		void Ricochet(ObstacleObject* obj);
 
 		//Activates the unique effect of the given bullet
-		virtual void Activate();
+		virtual void Activate(std::vector<BulletGameObject*>* bullets);
 
 		int getDamage() { return damage; }
 

@@ -11,7 +11,7 @@ namespace game {
 
 	}
 
-	void StandardShot::Activate()
+	void StandardShot::Activate(std::vector<BulletGameObject*>* bullets)
 	{
 		//Double the damage of the shot
 		damage *= 2;

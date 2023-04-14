@@ -459,9 +459,9 @@ namespace game {
 				hud->SetText(strWP);
 			}
 			else if (hud->getType() == 4) {
-				std::string strWP = std::to_string(player->getInvinStart() + 10 - (int)glfwGetTime());
-				hud->SetText(strWP);
-				if (strWP == "0") {
+				std::string strIV = std::to_string(player->getInvinStart() + 10 - (int)glfwGetTime());
+				hud->SetText(strIV);
+				if (strIV == "0") {
 					hud_objects.erase(hud_objects.begin() + i - 1);
 					hud_objects.erase(hud_objects.begin() + i - 1);
 				}
@@ -685,6 +685,7 @@ namespace game {
 				{
 					//Ricochet the bullet
 					bullet->Ricochet(obstacle);
+					bullet->Activate(&ally_bullets_);
 				}
 			}
 
@@ -799,6 +800,7 @@ namespace game {
 				{
 					//Ricochet the bullet
 					bullet->Ricochet(obstacle);
+					bullet->Activate(&enemy_bullets_);
 				}
 			}
 
@@ -956,7 +958,7 @@ namespace game {
 			}
 			if (glfwGetKey(window_, GLFW_KEY_SPACE) == GLFW_PRESS) {
 				//fire ally bullet every 1 seconds
-				if (glfwGetTime() > lastFireTime + 0.1) {
+				if (glfwGetTime() > lastFireTime + 0.5) {
 					lastFireTime = glfwGetTime();
 
 					int weapon = player->getWeapon();

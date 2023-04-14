@@ -52,54 +52,10 @@ namespace game {
 
 			//fixes the rotation
 			rotAngle = glm::atan(velocity_.y, velocity_.x) - 3.1415/2;
-
-
-			//Sorry Justin
-			/*
-			glm::vec3 objPos = obj->GetPosition();
-			float objAngle = obj->getRotation();
-			float normalAngle = objAngle - 3.1415/2;
-
-			// Set up vectors for the bullet, the object, and its normal
-			double length = sqrt(pow(velocity_.x, 2) + pow(velocity_.y, 2));
-			velocity_ /= length;
-
-			glm::vec3 objVector = obj->getEndPos() - obj->getStartPos();
-			glm::vec3 normalVector(sin(objAngle), cos(objAngle), 0.0f);
-
-			//Calculate the new angle for the bullet
-			float dot = glm::dot(velocity_, normalVector);
-			float angleDif = acos(dot);
-
-			//Determine which side of the normal the bullet is on and update the bullet's angle accordingly
-			dot = glm::dot(velocity_, objVector);
-			float direction = 0.0f;
-			std::cout << dot << std::endl;
-			if (dot > 0)
-			{
-				direction = normalAngle + angleDif;
-			}
-			else
-			{
-				direction = normalAngle - angleDif;
-			}
-
-			//Update the bullet's velocity using the new angle
-			velocity_ = glm::vec3(cos(direction), sin(direction), 0.0f);
-			velocity_ *= length;
-			rotAngle = direction - 3.1415/2;
-			*/
-
-			//Activate the bullet's effect
-			if (!ricocheted)
-			{
-				ricocheted = true;
-				Activate();
-			}
 		}
 	}
 
-	void BulletGameObject::Activate()
+	void BulletGameObject::Activate(std::vector<BulletGameObject*>* bullets)
 	{
 
 	}
