@@ -1,3 +1,8 @@
+This project was created by 
+Justin Calverley (101218430)
+Scott Chapman (101233571)
+Daniel Guo (101228932)
+
 How to play:
 	Controls:
 		W to accelarate, S to decellarate(to 0). A and D to steer.
