@@ -49,8 +49,8 @@ namespace game {
 			enemy_bullets_.push_back(new BulletGameObject(position_, sprite_, sprite_shader_, tex, rotAngle, 3, true));
 		}*/
 
-		//fire downwards 4 times a second
-		if (lastFireTime + 0.25f < glfwGetTime() && health > 0) {
+		//fire downwards 2 times a second
+		if (lastFireTime + 0.5f < glfwGetTime() && health > 0) {
 			lastFireTime = glfwGetTime();
 			glm::vec3 dir = glm::vec3(0, -1, 0);
 			float rotAngle = glm::atan(dir.y, dir.x);

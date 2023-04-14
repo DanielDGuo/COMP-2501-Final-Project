@@ -35,8 +35,8 @@
 #define CAMERA_ZOOM 0.25
 
 #define MAX_WALLS 2
-#define MIN_WALL_LENGTH 0.1
-#define MAX_WALL_LENGTH 2
+#define MIN_WALL_LENGTH 0.5
+#define MAX_WALL_LENGTH 4
 
 namespace game {
 
