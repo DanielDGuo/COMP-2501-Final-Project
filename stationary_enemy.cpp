@@ -39,7 +39,8 @@ namespace game {
 			glm::vec3 dir = glm::normalize(playerLoc - position_);
 			float rotAngle = glm::atan(dir.y, dir.x);
 
-			enemy_bullets_.push_back(new BulletGameObject(position_, sprite_, sprite_shader_, tex, rotAngle, 4, true));
+			enemy_bullets_.push_back(new BulletGameObject(position_, sprite_, sprite_shader_, tex, rotAngle + 0.5, 4, true));
+			enemy_bullets_.push_back(new BulletGameObject(position_, sprite_, sprite_shader_, tex, rotAngle - 0.5, 4, true));
 		}
 	}
 

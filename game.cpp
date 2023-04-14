@@ -232,16 +232,6 @@ namespace game {
 
 		hud_objects.push_back(score);
 
-		//collectibles
-		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-3.0f, -2.0f, 0.0f), sprite_, &sprite_shader_, tex_[8], 0));
-		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-3.0f, -1.0f, 0.0f), sprite_, &sprite_shader_, tex_[8], 0));
-		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-3.0f, 0.0f, 0.0f), sprite_, &sprite_shader_, tex_[8], 0));
-		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-3.0f, 1.0f, 0.0f), sprite_, &sprite_shader_, tex_[8], 0));
-		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-3.0f, 2.0f, 0.0f), sprite_, &sprite_shader_, tex_[8], 0));
-
-		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-4.0f, -4.0f, 0.0f), sprite_, &sprite_shader_, tex_[16], 1));
-		collectible_game_objects_.push_back(new CollectibleObject(glm::vec3(-1.0f, -1.0f, 0.0f), sprite_, &sprite_shader_, tex_[17], 2));
-
 		// Setup background
 		int j = -1;
 		float width = 10;
@@ -314,7 +304,6 @@ namespace game {
 		SetTexture(tex_[2], (resources_directory_g + std::string("/textures/skull.png")).c_str());
 		SetTexture(tex_[3], (resources_directory_g + std::string("/textures/stars.png")).c_str());
 		SetTexture(tex_[4], (resources_directory_g + std::string("/textures/orb.png")).c_str());
-		// new textures 
 		SetTexture(tex_[5], (resources_directory_g + std::string("/textures/OctoHead.png")).c_str());
 		SetTexture(tex_[6], (resources_directory_g + std::string("/textures/OctoTent.png")).c_str());
 		SetTexture(tex_[7], (resources_directory_g + std::string("/textures/boom.png")).c_str());
@@ -400,7 +389,7 @@ namespace game {
 			for (int i = 0; i < enemyNumber; i++) {
 				int enemyType = rand() % 3;
 				if (enemyType == 0) {//spawn kamakaze
-					enemy_game_objects_.push_back(new Kamakaze(spawnLocation, sprite_, &sprite_shader_, tex_[6]));
+					enemy_game_objects_.push_back(new Kamakaze(spawnLocation, sprite_, &sprite_shader_, tex_[4]));
 				}
 				if (enemyType == 1) {//spawn moving
 					glm::vec3 targetLoc;
@@ -411,7 +400,7 @@ namespace game {
 					targetLoc.x = playerPos.x + LO + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (HI - LO)));
 					targetLoc.y = playerPos.y + LO + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (HI - LO)));
 					targetLoc.z = 0;
-					enemy_game_objects_.push_back(new Moving(spawnLocation, sprite_, &sprite_shader_, tex_[6], targetLoc));
+					enemy_game_objects_.push_back(new Moving(spawnLocation, sprite_, &sprite_shader_, tex_[1], targetLoc));
 				}
 				if (enemyType == 2) {//spawn stationary
 					glm::vec3 targetLoc;
@@ -422,7 +411,7 @@ namespace game {
 					targetLoc.x = playerPos.x + LO + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (HI - LO)));
 					targetLoc.y = playerPos.y + LO + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (HI - LO)));
 					targetLoc.z = 0;
-					enemy_game_objects_.push_back(new Stationary(spawnLocation, sprite_, &sprite_shader_, tex_[6], targetLoc));
+					enemy_game_objects_.push_back(new Stationary(spawnLocation, sprite_, &sprite_shader_, tex_[2], targetLoc));
 				}
 			}
 		}
