@@ -320,6 +320,8 @@ namespace game {
 		SetTexture(tex_[16], (resources_directory_g + std::string("/textures/healthCoin.png")).c_str());
 		SetTexture(tex_[17], (resources_directory_g + std::string("/textures/wallCoin.png")).c_str());
 		SetTexture(tex_[18], (resources_directory_g + std::string("/textures/font.png")).c_str());
+		SetTexture(tex_[19], (resources_directory_g + std::string("/textures/standard_bullet.png")).c_str());
+		SetTexture(tex_[20], (resources_directory_g + std::string("/textures/triple_bullet.png")).c_str());
 
 		glBindTexture(GL_TEXTURE_2D, tex_[0]);
 	}
@@ -964,11 +966,11 @@ namespace game {
 					int weapon = player->getWeapon();
 					if (weapon == 1)
 					{
-						ally_bullets_.push_back(new StandardShot(curpos, sprite_, &sprite_shader_, tex_[10], currot + 3.1415 / 2, 5, false));
+						ally_bullets_.push_back(new StandardShot(curpos, sprite_, &sprite_shader_, tex_[19], currot + 3.1415 / 2, 5, false));
 					}
 					else if (weapon == 2)
 					{
-						ally_bullets_.push_back(new TripleShot(curpos, sprite_, &sprite_shader_, tex_[10], currot + 3.1415 / 2, 5, false));
+						ally_bullets_.push_back(new TripleShot(curpos, sprite_, &sprite_shader_, tex_[20], currot + 3.1415 / 2, 5, false));
 					}
 				}
 
