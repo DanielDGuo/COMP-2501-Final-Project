@@ -301,7 +301,7 @@ namespace game {
 		glGenTextures(NUM_TEXTURES, tex_);
 		SetTexture(tex_[0], (resources_directory_g + std::string("/textures/Player.png")).c_str());
 		SetTexture(tex_[1], (resources_directory_g + std::string("/textures/rat.png")).c_str());
-		SetTexture(tex_[2], (resources_directory_g + std::string("/textures/skull.png")).c_str());
+		SetTexture(tex_[2], (resources_directory_g + std::string("/textures/purpTent.png")).c_str());
 		SetTexture(tex_[3], (resources_directory_g + std::string("/textures/stars.png")).c_str());
 		SetTexture(tex_[4], (resources_directory_g + std::string("/textures/orb.png")).c_str());
 		SetTexture(tex_[5], (resources_directory_g + std::string("/textures/OctoHead.png")).c_str());
@@ -320,6 +320,7 @@ namespace game {
 		SetTexture(tex_[18], (resources_directory_g + std::string("/textures/font.png")).c_str());
 		SetTexture(tex_[19], (resources_directory_g + std::string("/textures/standard_bullet.png")).c_str());
 		SetTexture(tex_[20], (resources_directory_g + std::string("/textures/triple_bullet.png")).c_str());
+		SetTexture(tex_[21], (resources_directory_g + std::string("/textures/duck.png")).c_str());
 
 		glBindTexture(GL_TEXTURE_2D, tex_[0]);
 	}
@@ -378,18 +379,21 @@ namespace game {
 			lastSpawned = glfwGetTime();
 			GameObject* player = player_game_objects_[0];
 			glm::vec3 playerPos = player->GetPosition();
-			glm::vec3 spawnLocation = playerPos;
-
-			//spawn 4 units above the player
-			spawnLocation.y += 4;
 
 			//spawn up to 4 enemies
 			int enemyNumber = rand() % 4 + 1;
 
 			for (int i = 0; i < enemyNumber; i++) {
+				glm::vec3 spawnLocation = playerPos;
+
+				//spawn 4 units above the player
+				spawnLocation.y += 4;
+				//spawn +-2 units in the x direction
+				spawnLocation.x += -2.0f + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (2.0f - -2.0f)));
+
 				int enemyType = rand() % 3;
 				if (enemyType == 0) {//spawn kamakaze
-					enemy_game_objects_.push_back(new Kamakaze(spawnLocation, sprite_, &sprite_shader_, tex_[4]));
+					enemy_game_objects_.push_back(new Kamakaze(spawnLocation, sprite_, &sprite_shader_, tex_[21]));
 				}
 				if (enemyType == 1) {//spawn moving
 					glm::vec3 targetLoc;
@@ -502,14 +506,24 @@ namespace game {
 			for (int j = 0; j < enemy_game_objects_.size(); j++) {
 				EnemyGameObject* enemyObject = enemy_game_objects_[j];
 				float distance = glm::length(enemyObject->GetPosition() - playerObject->GetPosition());
-
+				
 				//if distance is below a threshold, update the health
 				if (distance < 0.8f && enemyObject->getHealth() > 0) {
 					if (!playerObject->getInvincible()) {
 						playerObject->setHealth(playerObject->getHealth() - 5);
 					}
-					enemyObject->setHealth(enemyObject->getHealth() - 100);
+					//kill the enemy
+					enemyObject->setHealth(0);
+
+					//implement explosion creation here
+					ParticleSystem* particles = new ParticleSystem(glm::vec3(0.0f, -0.5f, 0.0f), explosionPart_, &particle_shader_, tex_[4], enemyObject, 2);
+					particles->SetScale(0.2);
+					particles->setLife(2);
+					particles->setSpawntime(current_time_);
 					curScore += enemyObject->getScore();
+
+					background_game_objects_.push_back(particles);
+
 				}
 			}
 

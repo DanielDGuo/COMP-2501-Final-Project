@@ -26,6 +26,10 @@ namespace game {
 		position_.x = (trans * glm::vec4(position_, 1.0f)).x;
 		position_.y = (trans * glm::vec4(position_, 1.0f)).y;
 
+		//find rotation
+		glm::vec3 dir = glm::normalize(playerLoc - position_);
+		rotAngle = glm::atan(dir.y, dir.x) + 3.1415/2;
+
 	}
 
 	void Kamakaze::fire(std::vector<BulletGameObject*>& enemy_bullets_, Geometry* sprite_, Shader* sprite_shader_, GLuint tex) {

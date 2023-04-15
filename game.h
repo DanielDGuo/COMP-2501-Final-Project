@@ -2,7 +2,7 @@
 #define GAME_H_
 
 #define GLEW_STATIC
-#define NUM_TEXTURES 21
+#define NUM_TEXTURES 22
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <vector>
