@@ -3,6 +3,10 @@ Justin Calverley (101218430)
 Scott Chapman (101233571)
 Daniel Guo (101228932)
 
+This project was the culmination of Comp 2501, consisting of knowledge from 4 assignments. I(Daniel Guo) worked on the enemies and helped fixed the ricochet mechanic.
+The following README information may be out of date(some last-minute balance and sprite textures may have changed). However, should overall give a general idea of
+the intended gameplay and mechanics.
+
 How to play:
 	Controls:
 		W to accelarate, S to decellarate(to 0). A and D to steer.
