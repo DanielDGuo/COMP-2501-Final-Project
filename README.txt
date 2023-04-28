@@ -7,6 +7,8 @@ This project was the culmination of Comp 2501, consisting of knowledge from 4 as
 The following README information may be out of date(some last-minute balance and sprite textures may have changed). However, should overall give a general idea of
 the intended gameplay and mechanics.
 
+To compile this code, run cmake, selecting the binaries locations and VSCode 17 2022, and include the libraries included in this repo.
+
 How to play:
 	Controls:
 		W to accelarate, S to decellarate(to 0). A and D to steer.
